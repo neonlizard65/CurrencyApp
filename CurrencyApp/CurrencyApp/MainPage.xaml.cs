@@ -31,8 +31,6 @@ namespace CurrencyApp
             }
             */
 
-            TableValuta.ItemsSource = dt;
-
             DataRow[] rows = dt.Select("Vname = 'Доллар США'");
             string course = rows[0].ItemArray[2].ToString();
             Price.Text = course;
