@@ -34,6 +34,14 @@ namespace CurrencyApp
             DataRow[] rows = dt.Select("Vname = 'Доллар США'");
             string course = rows[0].ItemArray[2].ToString();
             Price.Text = course;
+
+            List<DataRow> rows1 = new List<DataRow>();
+            foreach(DataRow x in dt.Rows)
+            {
+                rows1.Add(x);
+            }
+
+
         }
 
         public DataTable XElementToDataTable(XElement element)
