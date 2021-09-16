@@ -1,0 +1,24 @@
+{
+  "ExtendedData": {
+    "inputs": [
+      "http://www.cbr.ru/DailyInfoWebServ/DailyInfo.asmx"
+    ],
+    "collectionTypes": [
+      "System.Array",
+      "System.Collections.Generic.Dictionary`2"
+    ],
+    "namespaceMappings": [
+      "*, ServiceReference1"
+    ],
+    "references": [
+      "System.Numerics.Vectors, {System.Numerics.Vectors, 4.5.0}",
+      "Xamarin.Essentials, {Xamarin.Essentials, 1.6.1}",
+      "Xamarin.Forms.Core, {Xamarin.Forms, 5.0.0.2012}",
+      "Xamarin.Forms.Platform, {Xamarin.Forms, 5.0.0.2012}",
+      "Xamarin.Forms.Xaml, {Xamarin.Forms, 5.0.0.2012}"
+    ],
+    "sync": true,
+    "targetFramework": "netstandard2.0",
+    "typeReuseMode": "All"
+  }
+}

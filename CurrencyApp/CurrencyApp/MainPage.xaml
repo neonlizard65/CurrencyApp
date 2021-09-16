@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Syncfusion="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             x:Class="CurrencyApp.MainPage">
+
+    <StackLayout Orientation="Vertical">
+        <Label TextColor="Black" Text="Dollar ="></Label>
+        <Label TextColor="Black" x:Name="Price"/>
+        <Syncfusion:SfDataGrid x:Name="TableValuta" ColumnSizer="SizeToHeader"/>
+    </StackLayout>
+
+</ContentPage>
