@@ -9,6 +9,7 @@ using Xamarin.Forms;
 using ServiceReference1;
 using System.Xml.Linq;
 using System.IO;
+using static CurrencyApp.CurrentCurrencyClass;
 
 namespace CurrencyApp
 {
@@ -17,6 +18,7 @@ namespace CurrencyApp
         public MainPage()
         {
             InitializeComponent();
+            
 
             DailyInfoSoapClient client = new DailyInfoSoapClient(DailyInfoSoapClient.EndpointConfiguration.DailyInfoSoap);
             var curstoday = client.GetCursOnDate(DateTime.Now);
@@ -36,10 +38,19 @@ namespace CurrencyApp
             Price.Text = course;
 
             List<DataRow> rows1 = new List<DataRow>();
+            List<ValuteDataValuteCursOnDate> AllValutes = new List<ValuteDataValuteCursOnDate>();
             foreach(DataRow x in dt.Rows)
             {
                 rows1.Add(x);
+                AllValutes.Add(new ValuteDataValuteCursOnDate(
+                    x[0].ToString(), 
+                    ushort.Parse(x[1].ToString()), 
+                    decimal.Parse(x[2].ToString()), 
+                    x[4].ToString())
+                    );
             }
+            ListView1.ItemsSource = AllValutes;
+
 
 
         }
