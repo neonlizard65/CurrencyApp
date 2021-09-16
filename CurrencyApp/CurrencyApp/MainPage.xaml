@@ -4,7 +4,7 @@
              x:Class="CurrencyApp.MainPage">
     
     <StackLayout Orientation="Vertical">
-        <Label Text="С днём говна">
+        <Label Text="С днrthrthём говна">
         </Label>
         <Label TextColor="Black" Text="Dollar ="></Label>
         <Label TextColor="Black" x:Name="Price"/>
