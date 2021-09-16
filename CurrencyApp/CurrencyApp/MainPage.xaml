@@ -4,10 +4,8 @@
              x:Class="CurrencyApp.MainPage">
 
     <StackLayout Orientation="Vertical">
-        <Label/>
         <Label TextColor="Black" Text="Dollar ="></Label>
         <Label TextColor="Black" x:Name="Price"/>
-        <Label Text="ebayt"></Label>
     </StackLayout>
 
 </ContentPage>
