@@ -4,8 +4,6 @@
              x:Class="CurrencyApp.MainPage">
     
     <StackLayout Orientation="Vertical">
-        <Label Text="С днrthrthём говна">
-        </Label>
         <Label TextColor="Black" Text="Dollar ="></Label>
         <Label TextColor="Black" x:Name="Price"/>
         <ListView Background="#F2F232" x:Name="ListView1">
