@@ -29,8 +29,6 @@ namespace CurrencyApp
             DataTable dt = XElementToDataTable(curstoday.Nodes[0]);
 
 
-
-
             DataRow[] rows = dt.Select("Vname = 'Доллар США'");
             string course = rows[0].ItemArray[2].ToString();
             Price.Text = course;

@@ -33,7 +33,11 @@ namespace CurrencyApp
                 drlist.Add(dr);
             }
 
-            
+            AllValutes.Add(new ValuteDataValuteCursOnDate(
+                    "Российский рубль",
+                    1,
+                    1,
+                    "RUB"));
             foreach (DataRow x in dt.Rows)
             {
                 drlist.Add(x);
