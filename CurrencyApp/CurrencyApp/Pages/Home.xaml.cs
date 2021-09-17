@@ -70,7 +70,7 @@ namespace CurrencyApp
         {
             try
             {
-                await Browser.OpenAsync(new Uri((sender as Label).Text), BrowserLaunchMode.SystemPreferred);
+                await Browser.OpenAsync(((sender as ListView).SelectedItem as NewsInfoNews).Url, BrowserLaunchMode.SystemPreferred);
             }
             catch
             {
