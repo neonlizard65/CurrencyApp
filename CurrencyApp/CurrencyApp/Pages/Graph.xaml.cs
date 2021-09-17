@@ -23,18 +23,27 @@ namespace CurrencyApp
             InitializeComponent();
 
 
-            //Подклчение и загрузка данных их ЦБ
-            DailyInfoSoapClient client = new DailyInfoSoapClient(DailyInfoSoapClient.EndpointConfiguration.DailyInfoSoap);
-            var curstoday = client.GetCursOnDate(DateTime.Now);
-            DataTable dt = XElementToDataTable(curstoday.Nodes[0]);
+
+            //Подключение и загрузка данных из ЦБ
+            DailyInfoSoapClient client = new DailyInfoSoapClient(DailyInfoSoapClient.EndpointConfiguration.DailyInfoSoap); //Клиент
+            var curstoday = client.GetCursOnDate(DateTime.Now);  //Ежедневный курс валют
+            var dynamic = client.GetCursDynamic(DateTime.Now, DateTime.Now, "USD"); //Потом нашишем
+            DataTable dt = XElementToDataTable(curstoday.Nodes[0]); //Таблица из исходящая из xml
 
 
-          /*  DataRow[] rows = dt.Select("Vname = 'Доллар США'");
-            string course = rows[0].ItemArray[2].ToString();
-            Price.Text = course; */
 
+            //Пример того, как можно найти конкретный элемент (и его поле) в таблице
+            /*  
+              DataRow[] rows = dt.Select("Vname = 'Доллар США'");
+              string course = rows[0].ItemArray[2].ToString();
+              Price.Text = course; */
+
+
+            //Перебор всех строк в таблице, добавление в список всех валют
             List<DataRow> dr = new List<DataRow>();
             List<ValuteDataValuteCursOnDate> AllValutes = new List<ValuteDataValuteCursOnDate>();
+
+            //Конвертируем строки таблицы в элементы нашего созданного класса валют из xml файла (через наш конструктор)
             foreach (DataRow x in dt.Rows)
             {
                 dr.Add(x);
@@ -45,9 +54,10 @@ namespace CurrencyApp
                     x[4].ToString())
                     );
             }
-            ListView1.ItemsSource = AllValutes;
+            ListView1.ItemsSource = AllValutes; //Источник данных - список со всеми валютами
         }
 
+        //Метод конвертирования из XML схемы в таблицу
         public DataTable XElementToDataTable(XElement element)
         {
             DataSet ds = new DataSet();

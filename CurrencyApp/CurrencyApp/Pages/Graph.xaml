@@ -6,6 +6,7 @@
     <ContentPage.Content>
 
         <StackLayout Orientation="Vertical">
+            
             <ListView Background="#F2F232" x:Name="ListView1">
             <ListView.ItemTemplate>
                 <DataTemplate>
