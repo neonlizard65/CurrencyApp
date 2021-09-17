@@ -5,18 +5,13 @@
              Title="Home">
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="NewsList" HasUnevenRows="True">
+            <ListView x:Name="NewsList" HasUnevenRows="True" ItemTapped="TapGestureRecognizer_Tapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Vertical">
-                                <Label x:Name="DateNews" Text="{Binding DocDate, StringFormat='{}{0: hh:mm     dd/MM/yyyy}'}" />
+                                <Label x:Name="DateNews" Text="{Binding DocDate, StringFormat='{}{0: HH:mm     dd/MM/yyyy}'}" />
                                 <Label x:Name="HeaderNews" Text="{Binding Title}"/>
-                                <Label x:Name="NewsLink" TextColor="Blue" TextDecorations="Underline" Text="{Binding Url}">
-                                    <Label.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                                    </Label.GestureRecognizers>
-                                </Label>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

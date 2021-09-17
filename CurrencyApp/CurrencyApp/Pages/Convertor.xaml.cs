@@ -67,7 +67,8 @@ namespace CurrencyApp
                 decimal firstVal = Convert.ToDecimal(Valute1.Text);
                 ValuteDataValuteCursOnDate val1 = (ValuteDataValuteCursOnDate)CurrencyPicker1.SelectedItem;
                 ValuteDataValuteCursOnDate val2 = (ValuteDataValuteCursOnDate)CurrencyPicker2.SelectedItem;
-                Valute2.Text = ((val1.Vcurs / val2.Vcurs) * firstVal).ToString("F4");
+                
+                Valute2.Text = ((val1.Vcurs / val1.Vnom) * firstVal / (val2.Vcurs / val2.Vnom)).ToString("F4");
             }
             catch
             {

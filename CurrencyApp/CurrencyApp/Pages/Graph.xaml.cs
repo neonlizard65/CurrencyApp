@@ -29,15 +29,15 @@ namespace CurrencyApp
             DataTable dt = XElementToDataTable(curstoday.Nodes[0]);
 
 
-            DataRow[] rows = dt.Select("Vname = 'Доллар США'");
+          /*  DataRow[] rows = dt.Select("Vname = 'Доллар США'");
             string course = rows[0].ItemArray[2].ToString();
-            Price.Text = course;
+            Price.Text = course; */
 
-            List<DataRow> rows1 = new List<DataRow>();
+            List<DataRow> dr = new List<DataRow>();
             List<ValuteDataValuteCursOnDate> AllValutes = new List<ValuteDataValuteCursOnDate>();
             foreach (DataRow x in dt.Rows)
             {
-                rows1.Add(x);
+                dr.Add(x);
                 AllValutes.Add(new ValuteDataValuteCursOnDate(
                     x[0].ToString(),
                     ushort.Parse(x[1].ToString()),
@@ -46,7 +46,6 @@ namespace CurrencyApp
                     );
             }
             ListView1.ItemsSource = AllValutes;
-
         }
 
         public DataTable XElementToDataTable(XElement element)
