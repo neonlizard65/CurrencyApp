@@ -5,7 +5,8 @@
              Title="Graph">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
-        <Label TextColor="Black" Text="Dollar ="></Label>
+            <Label Text="asdasd"/>
+            <Label TextColor="Black" Text="Dollar ="></Label>
         <Label TextColor="Black" x:Name="Price"/>
         <ListView Background="#F2F232" x:Name="ListView1">
             <ListView.ItemTemplate>
