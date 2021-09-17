@@ -8,6 +8,7 @@
             <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            <Button x:Name="ShutUp" Text="OFF FACE" Clicked="ShutUp_Clicked"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -16,5 +16,14 @@ namespace CurrencyApp
         {
             InitializeComponent();
         }
+        
+
+        private void ShutUp_Clicked(object sender, EventArgs e)
+        {
+            if (ShutUp.Text == "OFF FACE")
+                ShutUp.Text = "Выключи и иди делай уроки";
+            if (ShutUp.Text== "Выключи и иди делай уроки")
+                ShutUp.Text = "OFF FACE";
+        }
     }
 }
