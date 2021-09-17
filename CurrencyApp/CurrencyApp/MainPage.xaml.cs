@@ -20,9 +20,9 @@ namespace CurrencyApp
             InitializeComponent();
             
 
+            //Подклчение и загрузка данных их ЦБ
             DailyInfoSoapClient client = new DailyInfoSoapClient(DailyInfoSoapClient.EndpointConfiguration.DailyInfoSoap);
             var curstoday = client.GetCursOnDate(DateTime.Now);
-
             DataTable dt = XElementToDataTable(curstoday.Nodes[0]);
 
 
