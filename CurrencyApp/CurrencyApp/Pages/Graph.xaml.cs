@@ -17,25 +17,25 @@ using CurrencyApp.IncomingClasses;
 using Microcharts;
 using Microcharts.Forms;
 using SkiaSharp;
+using CurrencyApp.Pages.GpaphPages;
 
 namespace CurrencyApp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Graph : ContentPage
     {
+        List<ValuteDataValuteCursOnDate> AllValutes = new List<ValuteDataValuteCursOnDate>();
+        List<ValuteDataEnumValutes> valuteCodes = new List<ValuteDataEnumValutes>();
         public Graph()
         {
             InitializeComponent();
 
             //Подключение и загрузка данных из ЦБ
             DailyInfoSoapClient client = new DailyInfoSoapClient(DailyInfoSoapClient.EndpointConfiguration.DailyInfoSoap); //Клиент
-            
-            //Ежедневный курс валют
-            var curstoday = client.GetCursOnDate(DateTime.Now);  
-            DataTable dtNow = XElementToDataTable(curstoday.Nodes[0]); //Таблица из исходящая из xml
 
-            //Перебор всех строк в таблице, добавление в список всех валют
-            List<ValuteDataValuteCursOnDate> AllValutes = new List<ValuteDataValuteCursOnDate>();
+            //Ежедневный курс валют
+            var curstoday = client.GetCursOnDate(DateTime.Now);
+            DataTable dtNow = XElementToDataTable(curstoday.Nodes[0]); //Таблица из исходящая из xml
 
             //Конвертируем строки таблицы в элементы нашего созданного класса валют из xml файла (через наш конструктор)
             foreach (DataRow x in dtNow.Rows)
@@ -48,24 +48,22 @@ namespace CurrencyApp
                     ushort.Parse(x[3].ToString())
                     ));
             }
-            //ListView1.ItemsSource = AllValutes; //Источник данных - список со всеми валютами
 
 
             var valcodes = client.EnumValutes(false);
             DataTable dtValutes = XElementToDataTable(valcodes.Nodes[0]); //Таблица из исходящая из xml
-            List<ValuteDataEnumValutes> valuteCodes = new List<ValuteDataEnumValutes>();
             bool flag = false;
             foreach (DataRow x in dtValutes.Rows)
-            {               
-                foreach(ValuteDataValuteCursOnDate y in AllValutes)
+            {
+                foreach (ValuteDataValuteCursOnDate y in AllValutes)
                 {
-                    if(x[6].ToString() == y.VchCode)
+                    if (x[6].ToString() == y.VchCode)
                     {
                         flag = true;
                         break;
-                    } 
+                    }
                 }
-                if (flag) 
+                if (flag)
                 {
                     valuteCodes.Add(new ValuteDataEnumValutes(
                         x[0].ToString(),
@@ -78,66 +76,26 @@ namespace CurrencyApp
                 flag = false;
             }
 
-            List<ValuteDataValuteCursDynamic> dynamicList = new List<ValuteDataValuteCursDynamic>();
-            DateTime d1 = new DateTime(2021, 5, 2);
-            DateTime d2 = new DateTime(2021, 7, 2);
-            var dynamic = client.GetCursDynamic(d1, d2, "R01239");
-            DataTable dtDynamic = XElementToDataTable(dynamic.Nodes[0]); //Таблица из исходящая из xml
-            foreach (DataRow x in dtDynamic.Rows)
-            {
-                dynamicList.Add(new ValuteDataValuteCursDynamic(
-                    Convert.ToDateTime(x[0].ToString()),
-                    x[1].ToString(),
-                    byte.Parse(x[2].ToString()),
-                    decimal.Parse(x[3].ToString())
-                    ));
-            }
-
             //Пример того, как можно найти конкретный элемент (и его поле) в таблице
             /*  
               DataRow[] rows = dt.Select("Vname = 'Доллар США'");
               string course = rows[0].ItemArray[2].ToString();
               Price.Text = course; */
-            
 
-            var enterise = new[]
-            {
-                new ChartEntry(2) //Точка         //Вставить вес точки
-                {
-                    Label = "15", //Колонка(Надпись с низу)
-                    ValueLabel = "72,455", //Цивры у точки на графике
-                    Color = SKColor.Parse("#3498db") //Цвето точки
-                },
-                new ChartEntry(3)
-                {
-                    Label = "16",
-                    ValueLabel = "72,459",
-                    Color = SKColor.Parse("#3498db")
-                },
-                new ChartEntry(4)
-                {
-                    Label = "17",
-                    ValueLabel = "72,6",
-                    Color = SKColor.Parse("#3498db")
-                },
-                new ChartEntry(1)
-                {
-                    Label = "18",
-                    ValueLabel = "71,2",
-                    Color = SKColor.Parse("#3498db")
-                }
-            };
-            chartViewBar.Chart = new LineChart { Entries = enterise, LabelTextSize=30, LineMode=LineMode.Straight, LabelOrientation=Orientation.Horizontal, ValueLabelOrientation=Orientation.Horizontal};//Вывод графика с параметрами
+            ListView1.ItemsSource = AllValutes;
         }
-
-        
-
         //Метод конвертирования из XML схемы в таблицу
         public DataTable XElementToDataTable(XElement element)
         {
             DataSet ds = new DataSet();
             ds.ReadXml(new StringReader(element.ToString()));
             return ds.Tables[0];
+        }
+
+        private void ListView1_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            ValuteDataValuteCursOnDate context = ((sender as ListView).SelectedItem as ValuteDataValuteCursOnDate);
+            Navigation.PushAsync(new NavigationPage(new Graphs(ref context, ref valuteCodes)));
         }
     }
 }
