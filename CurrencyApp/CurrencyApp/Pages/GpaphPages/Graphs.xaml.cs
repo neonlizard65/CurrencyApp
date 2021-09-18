@@ -23,7 +23,7 @@ namespace CurrencyApp.Pages.GpaphPages
         public Graphs(ref ValuteDataValuteCursOnDate context, ref List<ValuteDataEnumValutes> enumvalutes)
         {
             InitializeComponent();
-
+            NavigationPage.SetHasNavigationBar(this, false);
             //Подключение и загрузка данных из ЦБ
             DailyInfoSoapClient client = new DailyInfoSoapClient(DailyInfoSoapClient.EndpointConfiguration.DailyInfoSoap); //Клиент
 
