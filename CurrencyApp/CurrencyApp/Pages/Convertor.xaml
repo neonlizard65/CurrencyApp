@@ -7,7 +7,7 @@
         <StackLayout>
             <Picker x:Name="CurrencyPicker1"
                     ItemDisplayBinding="{Binding Vname}"/>
-            <Entry x:Name="Valute1"/>
+            <Entry x:Name="Valute1" Keyboard="Numeric"/>
             <Button Text="Конвертировать" x:Name="Convert_Btn" Clicked="Convert_Btn_Clicked"/>
             <Picker x:Name="CurrencyPicker2"
                     ItemDisplayBinding="{Binding Vname}"/>
