@@ -39,7 +39,8 @@ namespace CurrencyApp
                     "Российский рубль",
                     1,
                     1,
-                    "RUB"));
+                    "RUB",
+                    643));
             
             //Конвертируем строки таблицы в элементы нашего созданного класса валют из xml файла (через наш конструктор)
             foreach (DataRow x in dt.Rows)
@@ -49,7 +50,8 @@ namespace CurrencyApp
                     x[0].ToString(),
                     ushort.Parse(x[1].ToString()),
                     decimal.Parse(x[2].ToString()),
-                    x[4].ToString())
+                    x[4].ToString(),
+                    ushort.Parse(x[3].ToString()))
                     );
             }
 
