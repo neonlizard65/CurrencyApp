@@ -39,16 +39,9 @@ namespace CurrencyApp
             var weeklynews = client.NewsInfo(weekago, DateTime.Now);
             DataTable dt = XElementToDataTable(weeklynews.Nodes[0]);
 
-            List<DataRow> drlist = new List<DataRow>();
-            foreach (DataRow dr in dt.Rows)
-            {
-                drlist.Add(dr);
-            }
-
 
             foreach (DataRow x in dt.Rows)
             {
-                drlist.Add(x);
                 AllNews.Add(new NewsInfoNews(
                     Convert.ToDateTime(x[1].ToString()),
                     x[2].ToString(),
@@ -64,7 +57,7 @@ namespace CurrencyApp
         {
             if (ShutUp.Text == "OFF FACE")
                 ShutUp.Text = "Выключи и иди делай уроки";
-            if (ShutUp.Text== "Выключи и иди делай уроки")
+            else if (ShutUp.Text== "Выключи и иди делай уроки")
                 ShutUp.Text = "OFF FACE";
         }
 

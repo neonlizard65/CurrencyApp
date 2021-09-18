@@ -27,13 +27,6 @@ namespace CurrencyApp
             var curstoday = client.GetCursOnDate(DateTime.Now); //Ежедневный курс валют 
             DataTable dt = XElementToDataTable(curstoday.Nodes[0]); //Таблица из исходящая из xml
 
-            //Перебор всех строк в таблице, добавление в список всех валют
-            List<DataRow> drlist = new List<DataRow>(); 
-            foreach(DataRow dr in dt.Rows)
-            {
-                drlist.Add(dr);
-            }
-
             //Добавляем рубль, чтобы можно было с ним работать
             AllValutes.Add(new ValuteDataValuteCursOnDate(
                     "Российский рубль",
@@ -45,7 +38,6 @@ namespace CurrencyApp
             //Конвертируем строки таблицы в элементы нашего созданного класса валют из xml файла (через наш конструктор)
             foreach (DataRow x in dt.Rows)
             {
-                drlist.Add(x);
                 AllValutes.Add(new ValuteDataValuteCursOnDate(
                     x[0].ToString(),
                     ushort.Parse(x[1].ToString()),
@@ -73,12 +65,12 @@ namespace CurrencyApp
         {   //Обработчик нажатия кнопки "Конвертировать"
             try
             {
-                decimal firstVal = Convert.ToDecimal(Valute1.Text); //Поле ввода
+                decimal multiplier = Convert.ToDecimal(Valute1.Text); //Поле ввода
                 //Элементы пикера являются объектами списка валют, который составляет источник данных пикера
                 ValuteDataValuteCursOnDate val1 = (ValuteDataValuteCursOnDate)CurrencyPicker1.SelectedItem;
                 ValuteDataValuteCursOnDate val2 = (ValuteDataValuteCursOnDate)CurrencyPicker2.SelectedItem;
-                
-                Valute2.Text = ((val1.Vcurs / val1.Vnom) * firstVal / (val2.Vcurs / val2.Vnom)).ToString("F4"); //Вывод
+
+                Valute2.Text = ((val1.Vcurs / val1.Vnom) * multiplier / (val2.Vcurs / val2.Vnom)).ToString("F4"); //Вывод
             }
             catch
             {

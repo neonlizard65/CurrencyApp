@@ -24,8 +24,6 @@ namespace CurrencyApp
         {
             InitializeComponent();
 
-
-
             //Подключение и загрузка данных из ЦБ
             DailyInfoSoapClient client = new DailyInfoSoapClient(DailyInfoSoapClient.EndpointConfiguration.DailyInfoSoap); //Клиент
             
@@ -61,6 +59,7 @@ namespace CurrencyApp
                     if(x[6].ToString() == y.VchCode)
                     {
                         flag = true;
+                        break;
                     } 
                 }
                 if (flag) 
@@ -90,8 +89,6 @@ namespace CurrencyApp
                     decimal.Parse(x[3].ToString())
                     ));
             }
-
-            ListView2.ItemsSource = dynamicList;
 
             //Пример того, как можно найти конкретный элемент (и его поле) в таблице
             /*  
