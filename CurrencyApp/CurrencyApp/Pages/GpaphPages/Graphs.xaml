@@ -4,9 +4,7 @@
              x:Class="CurrencyApp.Pages.GpaphPages.Graphs">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <microcharts:ChartView x:Name="chartViewBar" HeightRequest="200"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
