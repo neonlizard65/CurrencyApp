@@ -68,7 +68,7 @@ namespace CurrencyApp.IncomingClasses
 
         private string vcodeField;
 
-        private byte vnomField;
+        private uint vnomField;
 
         private decimal vcursField;
 
@@ -103,7 +103,7 @@ namespace CurrencyApp.IncomingClasses
         }
 
         /// <remarks/>
-        public byte Vnom
+        public uint Vnom
         {
             get
             {
@@ -156,7 +156,7 @@ namespace CurrencyApp.IncomingClasses
             }
         }
 
-        public ValuteDataValuteCursDynamic(DateTime date, string vcode, byte vnom, decimal vcurs)
+        public ValuteDataValuteCursDynamic(DateTime date, string vcode, uint vnom, decimal vcurs)
         {
             CursDate = date;
             Vcode = vcode;

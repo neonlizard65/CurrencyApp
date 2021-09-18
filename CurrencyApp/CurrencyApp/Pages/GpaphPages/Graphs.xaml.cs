@@ -29,7 +29,7 @@ namespace CurrencyApp.Pages.GpaphPages
 
             List<ValuteDataValuteCursDynamic> dynamicList = new List<ValuteDataValuteCursDynamic>();
             DateTime d1 = DateTime.Now;
-            DateTime d2 = d1.Subtract(new TimeSpan(30, 0, 0, 0));
+            DateTime d2 = d1.Subtract(new TimeSpan(9, 0, 0, 0));
 
             string currentValute = null;
 
@@ -48,7 +48,7 @@ namespace CurrencyApp.Pages.GpaphPages
                 dynamicList.Add(new ValuteDataValuteCursDynamic(
                     Convert.ToDateTime(x[0].ToString()),
                     x[1].ToString(),
-                    byte.Parse(x[2].ToString()),
+                    uint.Parse(x[2].ToString()),
                     decimal.Parse(x[3].ToString())
                     ));
             }
