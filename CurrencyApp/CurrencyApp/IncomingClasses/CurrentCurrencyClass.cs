@@ -173,12 +173,13 @@ namespace CurrencyApp
                 }
             }
 
-            public ValuteDataValuteCursOnDate(string vname, ushort vnom, decimal vcurs, string vchcode)
+            public ValuteDataValuteCursOnDate(string vname, ushort vnom, decimal vcurs, string vchcode, ushort vcode)
             {
                 Vname = vname;
                 Vnom = vnom;
                 Vcurs = vcurs;
                 VchCode = vchcode;
+                Vcode = vcode;
             }
 
             public static List<ValuteDataValuteCursOnDate> AllValutes { get; set; }

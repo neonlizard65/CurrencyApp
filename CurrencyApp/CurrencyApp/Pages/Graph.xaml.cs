@@ -12,6 +12,8 @@ using ServiceReference1;
 using System.Xml.Linq;
 using System.IO;
 using static CurrencyApp.CurrentCurrencyClass;
+using static CurrencyApp.IncomingClasses.EnumCourses;
+using CurrencyApp.IncomingClasses;
 
 namespace CurrencyApp
 {
@@ -23,31 +25,82 @@ namespace CurrencyApp
             InitializeComponent();
 
 
-            //Подклчение и загрузка данных их ЦБ
-            DailyInfoSoapClient client = new DailyInfoSoapClient(DailyInfoSoapClient.EndpointConfiguration.DailyInfoSoap);
-            var curstoday = client.GetCursOnDate(DateTime.Now);
-            DataTable dt = XElementToDataTable(curstoday.Nodes[0]);
 
+            //Подключение и загрузка данных из ЦБ
+            DailyInfoSoapClient client = new DailyInfoSoapClient(DailyInfoSoapClient.EndpointConfiguration.DailyInfoSoap); //Клиент
+            
+            //Ежедневный курс валют
+            var curstoday = client.GetCursOnDate(DateTime.Now);  
+            DataTable dtNow = XElementToDataTable(curstoday.Nodes[0]); //Таблица из исходящая из xml
 
-          /*  DataRow[] rows = dt.Select("Vname = 'Доллар США'");
-            string course = rows[0].ItemArray[2].ToString();
-            Price.Text = course; */
-
-            List<DataRow> dr = new List<DataRow>();
+            //Перебор всех строк в таблице, добавление в список всех валют
             List<ValuteDataValuteCursOnDate> AllValutes = new List<ValuteDataValuteCursOnDate>();
-            foreach (DataRow x in dt.Rows)
+
+            //Конвертируем строки таблицы в элементы нашего созданного класса валют из xml файла (через наш конструктор)
+            foreach (DataRow x in dtNow.Rows)
             {
-                dr.Add(x);
                 AllValutes.Add(new ValuteDataValuteCursOnDate(
                     x[0].ToString(),
                     ushort.Parse(x[1].ToString()),
                     decimal.Parse(x[2].ToString()),
-                    x[4].ToString())
-                    );
+                    x[4].ToString(),
+                    ushort.Parse(x[3].ToString())
+                    ));
             }
-            ListView1.ItemsSource = AllValutes;
+            ListView1.ItemsSource = AllValutes; //Источник данных - список со всеми валютами
+
+
+            var valcodes = client.EnumValutes(false);
+            DataTable dtValutes = XElementToDataTable(valcodes.Nodes[0]); //Таблица из исходящая из xml
+            List<ValuteDataEnumValutes> valuteCodes = new List<ValuteDataEnumValutes>();
+            bool flag = false;
+            foreach (DataRow x in dtValutes.Rows)
+            {               
+                foreach(ValuteDataValuteCursOnDate y in AllValutes)
+                {
+                    if(x[6].ToString() == y.VchCode)
+                    {
+                        flag = true;
+                    } 
+                }
+                if (flag) 
+                {
+                    valuteCodes.Add(new ValuteDataEnumValutes(
+                        x[0].ToString(),
+                        x[6].ToString(),
+                        ushort.Parse(x[5].ToString()),
+                        uint.Parse(x[3].ToString()),
+                        x[1].ToString()
+                        ));
+                }
+                flag = false;
+            }
+
+            List<ValuteDataValuteCursDynamic> dynamicList = new List<ValuteDataValuteCursDynamic>();
+            DateTime d1 = new DateTime(2021, 5, 2);
+            DateTime d2 = new DateTime(2021, 7, 2);
+            var dynamic = client.GetCursDynamic(d1, d2, "R01239");
+            DataTable dtDynamic = XElementToDataTable(dynamic.Nodes[0]); //Таблица из исходящая из xml
+            foreach (DataRow x in dtDynamic.Rows)
+            {
+                dynamicList.Add(new ValuteDataValuteCursDynamic(
+                    Convert.ToDateTime(x[0].ToString()),
+                    x[1].ToString(),
+                    byte.Parse(x[2].ToString()),
+                    decimal.Parse(x[3].ToString())
+                    ));
+            }
+
+            ListView2.ItemsSource = dynamicList;
+
+            //Пример того, как можно найти конкретный элемент (и его поле) в таблице
+            /*  
+              DataRow[] rows = dt.Select("Vname = 'Доллар США'");
+              string course = rows[0].ItemArray[2].ToString();
+              Price.Text = course; */
         }
 
+        //Метод конвертирования из XML схемы в таблицу
         public DataTable XElementToDataTable(XElement element)
         {
             DataSet ds = new DataSet();
