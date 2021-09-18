@@ -19,7 +19,6 @@ namespace CurrencyApp
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
-
         }
 
     }

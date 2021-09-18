@@ -29,7 +29,6 @@ namespace CurrencyApp
         public Graph()
         {
             InitializeComponent();
-
             //Подключение и загрузка данных из ЦБ
             DailyInfoSoapClient client = new DailyInfoSoapClient(DailyInfoSoapClient.EndpointConfiguration.DailyInfoSoap); //Клиент
 
@@ -95,7 +94,9 @@ namespace CurrencyApp
         private void ListView1_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             ValuteDataValuteCursOnDate context = ((sender as ListView).SelectedItem as ValuteDataValuteCursOnDate);
-            Navigation.PushAsync(new NavigationPage(new Graphs(ref context, ref valuteCodes)));
+            Page newnav = new NavigationPage(new Graphs(ref context, ref valuteCodes));
+            Navigation.PushAsync(newnav);
+            newnav.Title = context.VchCode;
         }
     }
 }
