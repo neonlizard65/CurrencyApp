@@ -55,6 +55,8 @@ namespace CurrencyApp.Pages.GpaphPages
             int length = dynamicList.Count;
             ChartEntry[] entries = new ChartEntry[length];
             int count = 0;
+            float min = 10000000000;
+            float max = 0;
             foreach (var item in dynamicList)
             {
                 entries[count] = new ChartEntry(float.Parse(item.Vcurs.ToString()))
@@ -63,10 +65,26 @@ namespace CurrencyApp.Pages.GpaphPages
                     ValueLabel = item.Vcurs.ToString(), //Цифры у точки на графике
                     Color = SKColor.Parse("#3498db") //Цвет точки
                 };
+                if(count == 0)
+                {
+                    min = Convert.ToSingle(item.Vcurs);
+                }
+                else
+                {
+                    if(min > Convert.ToSingle(item.Vcurs))
+                    {
+                        min = Convert.ToSingle(item.Vcurs);
+                    }
+                    if (max < Convert.ToSingle(item.Vcurs))
+                    {
+                        max = Convert.ToSingle(item.Vcurs);
+                    }
+                    
+                }
                 count++;
             }
-
-            chartViewBar.Chart = new LineChart { Entries = entries, LabelTextSize = 12, LineMode = LineMode.Straight, LabelOrientation = Orientation.Horizontal, ValueLabelOrientation = Orientation.Horizontal, MinValue=50 };//Вывод графика с параметрами
+            min = min - ((max - min) / 2);
+            chartViewBar.Chart = new LineChart { Entries = entries, LabelTextSize = 12, LineMode = LineMode.Straight, LabelOrientation = Orientation.Horizontal, ValueLabelOrientation = Orientation.Horizontal, MinValue=min};//Вывод графика с параметрами
         }
 
         public DataTable XElementToDataTable(XElement element)
