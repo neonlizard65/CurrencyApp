@@ -14,6 +14,9 @@ using System.IO;
 using static CurrencyApp.CurrentCurrencyClass;
 using static CurrencyApp.IncomingClasses.EnumCourses;
 using CurrencyApp.IncomingClasses;
+using Microcharts;
+using Microcharts.Forms;
+using SkiaSharp;
 
 namespace CurrencyApp
 {
@@ -45,7 +48,7 @@ namespace CurrencyApp
                     ushort.Parse(x[3].ToString())
                     ));
             }
-            ListView1.ItemsSource = AllValutes; //Источник данных - список со всеми валютами
+            //ListView1.ItemsSource = AllValutes; //Источник данных - список со всеми валютами
 
 
             var valcodes = client.EnumValutes(false);
@@ -95,7 +98,39 @@ namespace CurrencyApp
               DataRow[] rows = dt.Select("Vname = 'Доллар США'");
               string course = rows[0].ItemArray[2].ToString();
               Price.Text = course; */
+            
+
+            var enterise = new[]
+            {
+                new ChartEntry(2) //Точка         //Вставить вес точки
+                {
+                    Label = "15", //Колонка(Надпись с низу)
+                    ValueLabel = "72,455", //Цивры у точки на графике
+                    Color = SKColor.Parse("#3498db") //Цвето точки
+                },
+                new ChartEntry(3)
+                {
+                    Label = "16",
+                    ValueLabel = "72,459",
+                    Color = SKColor.Parse("#3498db")
+                },
+                new ChartEntry(4)
+                {
+                    Label = "17",
+                    ValueLabel = "72,6",
+                    Color = SKColor.Parse("#3498db")
+                },
+                new ChartEntry(1)
+                {
+                    Label = "18",
+                    ValueLabel = "71,2",
+                    Color = SKColor.Parse("#3498db")
+                }
+            };
+            chartViewBar.Chart = new LineChart { Entries = enterise, LabelTextSize=30, LineMode=LineMode.Straight, LabelOrientation=Orientation.Horizontal, ValueLabelOrientation=Orientation.Horizontal};//Вывод графика с параметрами
         }
+
+        
 
         //Метод конвертирования из XML схемы в таблицу
         public DataTable XElementToDataTable(XElement element)
