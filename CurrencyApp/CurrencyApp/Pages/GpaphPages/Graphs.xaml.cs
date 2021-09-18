@@ -66,7 +66,7 @@ namespace CurrencyApp.Pages.GpaphPages
                 count++;
             }
 
-            chartViewBar.Chart = new PieChart { Entries = entries, LabelTextSize = 12,  MinValue=50 , HoleRadius=20};//Вывод графика с параметрами
+            chartViewBar.Chart = new LineChart { Entries = entries, LabelTextSize = 12, LineMode = LineMode.Straight, LabelOrientation = Orientation.Horizontal, ValueLabelOrientation = Orientation.Horizontal, MinValue=50 };//Вывод графика с параметрами
         }
 
         public DataTable XElementToDataTable(XElement element)
