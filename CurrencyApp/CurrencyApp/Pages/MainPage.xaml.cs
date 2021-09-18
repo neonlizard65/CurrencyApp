@@ -18,7 +18,7 @@ namespace CurrencyApp
         public MainPage()
         {
             InitializeComponent();
-
+            
            
         }
 
