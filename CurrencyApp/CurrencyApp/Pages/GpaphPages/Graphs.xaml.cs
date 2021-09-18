@@ -83,8 +83,9 @@ namespace CurrencyApp.Pages.GpaphPages
                 }
                 count++;
             }
+            min = min - ((max - min)/2);
 
-            chartViewBar.Chart = new LineChart { Entries = entries, LabelTextSize = 12, LineMode = LineMode.Straight, LabelOrientation = Orientation.Horizontal, ValueLabelOrientation = Orientation.Horizontal, MinValue=50 };//Вывод графика с параметрами
+            chartViewBar.Chart = new LineChart { Entries = entries, LabelTextSize = 12, LineMode = LineMode.Straight, LabelOrientation = Orientation.Horizontal, ValueLabelOrientation = Orientation.Horizontal, MinValue=min };//Вывод графика с параметрами
         }
 
         public DataTable XElementToDataTable(XElement element)
