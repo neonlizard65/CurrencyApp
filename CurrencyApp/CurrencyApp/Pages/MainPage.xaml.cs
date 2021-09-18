@@ -10,6 +10,7 @@ using ServiceReference1;
 using System.Xml.Linq;
 using System.IO;
 using static CurrencyApp.CurrentCurrencyClass;
+using Xamarin.Essentials;
 
 namespace CurrencyApp
 {

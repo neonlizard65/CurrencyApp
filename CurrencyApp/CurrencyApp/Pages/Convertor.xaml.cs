@@ -11,6 +11,7 @@ using ServiceReference1;
 using System.Xml.Linq;
 using System.IO;
 using static CurrencyApp.CurrentCurrencyClass;
+using Xamarin.Essentials;
 
 namespace CurrencyApp
 {
@@ -20,36 +21,44 @@ namespace CurrencyApp
         List<ValuteDataValuteCursOnDate> AllValutes = new List<ValuteDataValuteCursOnDate>(); //Все валюты
         public Convertor()
         {
-            InitializeComponent();
-
-            //Подключение и загрузка данных из ЦБ
-            DailyInfoSoapClient client = new DailyInfoSoapClient(DailyInfoSoapClient.EndpointConfiguration.DailyInfoSoap); //Клиент
-            var curstoday = client.GetCursOnDate(DateTime.Now); //Ежедневный курс валют 
-            DataTable dt = XElementToDataTable(curstoday.Nodes[0]); //Таблица из исходящая из xml
-
-            //Добавляем рубль, чтобы можно было с ним работать
-            AllValutes.Add(new ValuteDataValuteCursOnDate(
-                    "Российский рубль",
-                    1,
-                    1,
-                    "RUB",
-                    643));
-            
-            //Конвертируем строки таблицы в элементы нашего созданного класса валют из xml файла (через наш конструктор)
-            foreach (DataRow x in dt.Rows)
+            var current = Connectivity.NetworkAccess;
+            if (current == NetworkAccess.Internet)
             {
-                AllValutes.Add(new ValuteDataValuteCursOnDate(
-                    x[0].ToString(),
-                    ushort.Parse(x[1].ToString()),
-                    decimal.Parse(x[2].ToString()),
-                    x[4].ToString(),
-                    ushort.Parse(x[3].ToString()))
-                    );
-            }
+                InitializeComponent();
 
-            //Пикерам настраиваем источник данных список с валютами
-            CurrencyPicker1.ItemsSource = AllValutes;
-            CurrencyPicker2.ItemsSource = AllValutes;
+                //Подключение и загрузка данных из ЦБ
+                DailyInfoSoapClient client = new DailyInfoSoapClient(DailyInfoSoapClient.EndpointConfiguration.DailyInfoSoap); //Клиент
+                var curstoday = client.GetCursOnDate(DateTime.Now); //Ежедневный курс валют 
+                DataTable dt = XElementToDataTable(curstoday.Nodes[0]); //Таблица из исходящая из xml
+
+                //Добавляем рубль, чтобы можно было с ним работать
+                AllValutes.Add(new ValuteDataValuteCursOnDate(
+                        "Российский рубль",
+                        1,
+                        1,
+                        "RUB",
+                        643));
+            
+                //Конвертируем строки таблицы в элементы нашего созданного класса валют из xml файла (через наш конструктор)
+                foreach (DataRow x in dt.Rows)
+                {
+                    AllValutes.Add(new ValuteDataValuteCursOnDate(
+                        x[0].ToString(),
+                        ushort.Parse(x[1].ToString()),
+                        decimal.Parse(x[2].ToString()),
+                        x[4].ToString(),
+                        ushort.Parse(x[3].ToString()))
+                        );
+                }
+
+                //Пикерам настраиваем источник данных список с валютами
+                CurrencyPicker1.ItemsSource = AllValutes;
+                CurrencyPicker2.ItemsSource = AllValutes;
+            }
+            else
+            {
+
+            }
         }
 
         //Метод конвертирования из XML схемы в таблицу

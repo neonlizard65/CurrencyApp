@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using static CurrencyApp.CurrentCurrencyClass;
@@ -22,70 +23,78 @@ namespace CurrencyApp.Pages.GpaphPages
     {
         public Graphs(ref ValuteDataValuteCursOnDate context, ref List<ValuteDataEnumValutes> enumvalutes)
         {
-            InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
-            //Подключение и загрузка данных из ЦБ
-            DailyInfoSoapClient client = new DailyInfoSoapClient(DailyInfoSoapClient.EndpointConfiguration.DailyInfoSoap); //Клиент
-
-            List<ValuteDataValuteCursDynamic> dynamicList = new List<ValuteDataValuteCursDynamic>();
-            DateTime d1 = DateTime.Now;
-            DateTime d2 = d1.Subtract(new TimeSpan(9, 0, 0, 0));
-
-            string currentValute = null;
-
-            foreach(var x in enumvalutes)
+            var current = Connectivity.NetworkAccess;
+            if (current == NetworkAccess.Internet)
             {
-                if(x.VnumCode == context.Vcode)
+                InitializeComponent();
+
+                NavigationPage.SetHasNavigationBar(this, false);
+                //Подключение и загрузка данных из ЦБ
+                DailyInfoSoapClient client = new DailyInfoSoapClient(DailyInfoSoapClient.EndpointConfiguration.DailyInfoSoap); //Клиент
+
+                List<ValuteDataValuteCursDynamic> dynamicList = new List<ValuteDataValuteCursDynamic>();
+                DateTime d1 = DateTime.Now;
+                DateTime d2 = d1.Subtract(new TimeSpan(9, 0, 0, 0));
+
+                string currentValute = null;
+
+                foreach(var x in enumvalutes)
                 {
-                    currentValute = x.Vcode;
+                    if(x.VnumCode == context.Vcode)
+                    {
+                        currentValute = x.Vcode;
+                    }
                 }
-            }
 
-            var dynamic = client.GetCursDynamic(d2, d1, currentValute);
-            DataTable dtDynamic = XElementToDataTable(dynamic.Nodes[0]); //Таблица из исходящая из xml
-            foreach (DataRow x in dtDynamic.Rows)
-            {
-                dynamicList.Add(new ValuteDataValuteCursDynamic(
-                    Convert.ToDateTime(x[0].ToString()),
-                    x[1].ToString(),
-                    uint.Parse(x[2].ToString()),
-                    decimal.Parse(x[3].ToString())
-                    ));
-            }
-            int length = dynamicList.Count;
-            ChartEntry[] entries = new ChartEntry[length];
-            int count = 0;
-            float min = 10000000000;
-            float max = 0;
-            foreach (var item in dynamicList)
-            {
-                entries[count] = new ChartEntry(float.Parse(item.Vcurs.ToString()))
+                var dynamic = client.GetCursDynamic(d2, d1, currentValute);
+                DataTable dtDynamic = XElementToDataTable(dynamic.Nodes[0]); //Таблица из исходящая из xml
+                foreach (DataRow x in dtDynamic.Rows)
                 {
-                    Label = item.CursDate.ToString("dd/MM/yyyy"), //Колонка(Надпись с низу)
-                    ValueLabel = item.Vcurs.ToString(), //Цифры у точки на графике
-                    Color = SKColor.Parse("#3498db") //Цвет точки
-                };
-                if(count == 0)
-                {
-                    min = Convert.ToSingle(item.Vcurs);
+                    dynamicList.Add(new ValuteDataValuteCursDynamic(
+                        Convert.ToDateTime(x[0].ToString()),
+                        x[1].ToString(),
+                        uint.Parse(x[2].ToString()),
+                        decimal.Parse(x[3].ToString())
+                        ));
                 }
-                else
+                int length = dynamicList.Count;
+                ChartEntry[] entries = new ChartEntry[length];
+                int count = 0;
+                float min = 10000000000;
+                float max = 0;
+                foreach (var item in dynamicList)
                 {
-                    if(min > Convert.ToSingle(item.Vcurs))
+                    entries[count] = new ChartEntry(float.Parse(item.Vcurs.ToString()))
+                    {
+                        Label = item.CursDate.ToString("dd/MM/yyyy"), //Колонка(Надпись с низу)
+                        ValueLabel = item.Vcurs.ToString(), //Цифры у точки на графике
+                        Color = SKColor.Parse("#3498db") //Цвет точки
+                    };
+                    if(count == 0)
                     {
                         min = Convert.ToSingle(item.Vcurs);
                     }
-                    if (max < Convert.ToSingle(item.Vcurs))
+                    else
                     {
-                        max = Convert.ToSingle(item.Vcurs);
-                    }
+                        if(min > Convert.ToSingle(item.Vcurs))
+                        {
+                            min = Convert.ToSingle(item.Vcurs);
+                        }
+                        if (max < Convert.ToSingle(item.Vcurs))
+                        {
+                            max = Convert.ToSingle(item.Vcurs);
+                        }
                     
+                    }
+                    count++;
                 }
-                count++;
-            }
-            min = min - ((max - min)/2);
+                min = min - ((max - min)/2);
 
-            chartViewBar.Chart = new LineChart { Entries = entries, LabelTextSize = 12, LineMode = LineMode.Straight, LabelOrientation = Orientation.Horizontal, ValueLabelOrientation = Orientation.Horizontal, MinValue=min };//Вывод графика с параметрами
+                chartViewBar.Chart = new LineChart { Entries = entries, LabelTextSize = 12, LineMode = LineMode.Straight, LabelOrientation = Orientation.Horizontal, ValueLabelOrientation = Orientation.Horizontal, MinValue=min };//Вывод графика с параметрами
+            }
+            else
+            {
+            }
         }
 
         public DataTable XElementToDataTable(XElement element)

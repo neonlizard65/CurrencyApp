@@ -1,4 +1,5 @@
 ﻿using System;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -8,6 +9,7 @@ namespace CurrencyApp
     {
         public App()
         {
+            // Connection to internet is available
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             MainPage = new NavigationPage(new MainPage());
@@ -15,6 +17,19 @@ namespace CurrencyApp
 
         protected override void OnStart()
         {
+            var current = Connectivity.NetworkAccess;
+            if (current != NetworkAccess.Internet)
+            {
+                var result = MainPage.DisplayAlert("Ошибка", "Отсутствует соединение к интернету", "", "Закрыть").ContinueWith(task =>
+               {
+                   if (task.Result == true || task.Result == false)
+                   {
+                       System.Diagnostics.Process.GetCurrentProcess().Kill();
+                   }
+               }
+               );
+
+            }
         }
 
         protected override void OnSleep()
