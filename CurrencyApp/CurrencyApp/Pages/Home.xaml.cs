@@ -23,6 +23,15 @@ namespace CurrencyApp
         {
             InitializeComponent();
 
+
+            //https://coolors.co/2c302e-474a48-909590-9ae19d-537a5a
+            //https://coolors.co/e8c547-30323d-4d5061-5c80bc-cdd1c4
+            //https://coolors.co/ed6a5a-f4f1bb-9bc1bc-5d576b-e6ebe0
+         
+
+
+
+
             //Подклчение и загрузка данных их ЦБ
             DailyInfoSoapClient client = new DailyInfoSoapClient(DailyInfoSoapClient.EndpointConfiguration.DailyInfoSoap);
             DateTime weekago = DateTime.Now;
