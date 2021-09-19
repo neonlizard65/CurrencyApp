@@ -6,7 +6,10 @@
              BackgroundColor="#76BED0">
     <ContentPage.Content>
         <StackLayout >
-            <Frame Padding="0,0,0,0" Margin="20,0,20,0" VerticalOptions="CenterAndExpand">
+            <Frame Padding="0,10,0,10" Margin="0,0,0,0">
+                <Label HorizontalOptions="CenterAndExpand" FontSize="30" TextColor="#5D576B">Конвектор валют</Label>
+            </Frame>
+            <Frame Padding="0,0,0,0" Margin="20,65,20,0">
                 <StackLayout>
                     <StackLayout Margin="0,0,0,0" Padding="30,10,30,10" Orientation="Horizontal">
                         <Entry x:Name="Valute1" Keyboard="Numeric"
@@ -33,8 +36,8 @@
                     <StackLayout>
                         <Button Text="Конвертировать" HorizontalOptions="Center" WidthRequest="320" x:Name="Convert_Btn" Clicked="Convert_Btn_Clicked" BackgroundColor="#76BED0"  CornerRadius="2" FontSize="20" TextColor="#FFFFFF"/>
                     </StackLayout>
-                    <StackLayout>
-                        <Label x:Name="Valute2" TextDecorations="Underline" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" FontSize="30"/>
+                    <StackLayout Margin="0,20,0,30" Padding="0,0,0,0">
+                        <Label x:Name="Valute2" TextDecorations="None" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" FontSize="40" IsVisible="false"/>
                     </StackLayout>
                 </StackLayout>
             </Frame>
