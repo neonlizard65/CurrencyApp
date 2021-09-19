@@ -31,6 +31,7 @@ namespace CurrencyApp
                 //https://coolors.co/2c302e-474a48-909590-9ae19d-537a5a
                 //https://coolors.co/e8c547-30323d-4d5061-5c80bc-cdd1c4
                 //https://coolors.co/ed6a5a-f4f1bb-9bc1bc-5d576b-e6ebe0
+                //https://coolors.co/f55d3e-878e88-f7cb15-ffffff-76bed0
 
                 GetData();
                 NewsList.ItemsSource = AllNews;
