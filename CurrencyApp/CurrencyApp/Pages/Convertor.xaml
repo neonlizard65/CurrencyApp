@@ -23,7 +23,7 @@
                     </StackLayout>
                     <StackLayout Margin="0,0,0,0" Padding="30,10,30,10">
                         <Picker x:Name="CurrencyPicker1"
-                    ItemDisplayBinding="{Binding Vname}"
+                    ItemDisplayBinding="{Binding VchCode}"
                     Title="Выберите валюту"
                     FontSize="30"
                     TitleColor="{AppThemeBinding Light=#878E88, Dark=#878E88}"
@@ -39,7 +39,7 @@
                     </StackLayout>
                     <StackLayout Margin="0,0,0,0" Padding="30,10,30,10">
                         <Picker x:Name="CurrencyPicker2"
-                    ItemDisplayBinding="{Binding Vname}"
+                    ItemDisplayBinding="{Binding VchCode}"
                     Title="Выберите валюту"
                     FontSize="30"
                     TitleColor="{AppThemeBinding Light=#878E88, Dark=#878E88}"
