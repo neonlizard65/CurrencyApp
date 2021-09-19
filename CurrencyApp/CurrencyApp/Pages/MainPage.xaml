@@ -7,9 +7,9 @@
              xmlns:local="clr-namespace:CurrencyApp;assembly=CurrencyApp">
 
     <TabbedPage.Children>
-        <local:Graph></local:Graph>
-        <local:Home/>
-        <local:Convertor/>
+        <local:Graph IconImageSource="chart.png" Title="Курс"></local:Graph>
+        <local:Home IconImageSource="newspaper.png" Title="Новости"/>
+        <local:Convertor IconImageSource="dollar.png" Title="Конвертер"/>
     </TabbedPage.Children>
     
 </TabbedPage>
