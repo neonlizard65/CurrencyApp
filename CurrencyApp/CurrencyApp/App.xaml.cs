@@ -13,6 +13,7 @@ namespace CurrencyApp
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             MainPage = new NavigationPage(new MainPage());
+            Application.Current.UserAppTheme = OSAppTheme.Light;
         }
 
         protected override void OnStart()

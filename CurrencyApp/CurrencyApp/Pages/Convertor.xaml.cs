@@ -16,6 +16,7 @@ using Xamarin.Essentials;
 namespace CurrencyApp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+
     public partial class Convertor : ContentPage
     {
         //Подключение и загрузка данных из ЦБ
@@ -23,6 +24,7 @@ namespace CurrencyApp
         List<ValuteDataValuteCursOnDate> AllValutes = new List<ValuteDataValuteCursOnDate>(); //Все валюты
         public Convertor()
         {
+
             var current = Connectivity.NetworkAccess;
             if (current == NetworkAccess.Internet)
             {

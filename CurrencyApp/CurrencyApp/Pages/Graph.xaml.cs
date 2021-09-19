@@ -25,10 +25,12 @@ namespace CurrencyApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Graph : ContentPage
     {
+
         //Подключение и загрузка данных из ЦБ
         DailyInfoSoapClient client = new DailyInfoSoapClient(DailyInfoSoapClient.EndpointConfiguration.DailyInfoSoap); //Клиент
         List<ValuteDataValuteCursOnDate> AllValutes = new List<ValuteDataValuteCursOnDate>();
         List<ValuteDataEnumValutes> valuteCodes = new List<ValuteDataEnumValutes>();
+
         public Graph()
         {
             var current = Connectivity.NetworkAccess;
