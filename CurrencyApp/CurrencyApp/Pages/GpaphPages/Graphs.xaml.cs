@@ -21,6 +21,9 @@ namespace CurrencyApp.Pages.GpaphPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Graphs : ContentPage
     {
+        //Подключение и загрузка данных из ЦБ
+        DailyInfoSoapClient client = new DailyInfoSoapClient(DailyInfoSoapClient.EndpointConfiguration.DailyInfoSoap); //Клиент
+        List<ValuteDataValuteCursDynamic> dynamicList = new List<ValuteDataValuteCursDynamic>();
         public Graphs(ref ValuteDataValuteCursOnDate context, ref List<ValuteDataEnumValutes> enumvalutes)
         {
             var current = Connectivity.NetworkAccess;
@@ -29,10 +32,8 @@ namespace CurrencyApp.Pages.GpaphPages
                 InitializeComponent();
 
                 NavigationPage.SetHasNavigationBar(this, false);
-                //Подключение и загрузка данных из ЦБ
-                DailyInfoSoapClient client = new DailyInfoSoapClient(DailyInfoSoapClient.EndpointConfiguration.DailyInfoSoap); //Клиент
 
-                List<ValuteDataValuteCursDynamic> dynamicList = new List<ValuteDataValuteCursDynamic>();
+               
                 DateTime d1 = DateTime.Now;
                 DateTime d2 = d1.Subtract(new TimeSpan(9, 0, 0, 0));
 
@@ -57,6 +58,7 @@ namespace CurrencyApp.Pages.GpaphPages
                         decimal.Parse(x[3].ToString())
                         ));
                 }
+
                 int length = dynamicList.Count;
                 ChartEntry[] entries = new ChartEntry[length];
                 int count = 0;
@@ -92,9 +94,6 @@ namespace CurrencyApp.Pages.GpaphPages
 
                 chartViewBar.Chart = new LineChart { Entries = entries, LabelTextSize = 12, LineMode = LineMode.Straight, LabelOrientation = Orientation.Horizontal, ValueLabelOrientation = Orientation.Horizontal, MinValue=min };//Вывод графика с параметрами
             }
-            else
-            {
-            }
         }
 
         public DataTable XElementToDataTable(XElement element)
@@ -102,6 +101,11 @@ namespace CurrencyApp.Pages.GpaphPages
             DataSet ds = new DataSet();
             ds.ReadXml(new StringReader(element.ToString()));
             return ds.Tables[0];
+        }
+
+        private void GetData()
+        {
+
         }
     }
 }

@@ -18,6 +18,8 @@ namespace CurrencyApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Convertor : ContentPage
     {
+        //Подключение и загрузка данных из ЦБ
+        DailyInfoSoapClient client = new DailyInfoSoapClient(DailyInfoSoapClient.EndpointConfiguration.DailyInfoSoap); //Клиент
         List<ValuteDataValuteCursOnDate> AllValutes = new List<ValuteDataValuteCursOnDate>(); //Все валюты
         public Convertor()
         {
@@ -26,11 +28,6 @@ namespace CurrencyApp
             {
                 InitializeComponent();
 
-                //Подключение и загрузка данных из ЦБ
-                DailyInfoSoapClient client = new DailyInfoSoapClient(DailyInfoSoapClient.EndpointConfiguration.DailyInfoSoap); //Клиент
-                var curstoday = client.GetCursOnDate(DateTime.Now); //Ежедневный курс валют 
-                DataTable dt = XElementToDataTable(curstoday.Nodes[0]); //Таблица из исходящая из xml
-
                 //Добавляем рубль, чтобы можно было с ним работать
                 AllValutes.Add(new ValuteDataValuteCursOnDate(
                         "Российский рубль",
@@ -38,26 +35,12 @@ namespace CurrencyApp
                         1,
                         "RUB",
                         643));
-            
-                //Конвертируем строки таблицы в элементы нашего созданного класса валют из xml файла (через наш конструктор)
-                foreach (DataRow x in dt.Rows)
-                {
-                    AllValutes.Add(new ValuteDataValuteCursOnDate(
-                        x[0].ToString(),
-                        ushort.Parse(x[1].ToString()),
-                        decimal.Parse(x[2].ToString()),
-                        x[4].ToString(),
-                        ushort.Parse(x[3].ToString()))
-                        );
-                }
+
+                GetData();
 
                 //Пикерам настраиваем источник данных список с валютами
                 CurrencyPicker1.ItemsSource = AllValutes;
                 CurrencyPicker2.ItemsSource = AllValutes;
-            }
-            else
-            {
-
             }
         }
 
@@ -69,7 +52,6 @@ namespace CurrencyApp
             return ds.Tables[0];
         }
 
-        //СДЕЛАТЬ: ограничение ввода (только числа), дизайн
         private void Convert_Btn_Clicked(object sender, EventArgs e)
         {   //Обработчик нажатия кнопки "Конвертировать"
             try
@@ -104,6 +86,24 @@ namespace CurrencyApp
             Valute2.Text = null;
             CurrencyPicker1.SelectedIndex = -1;
             CurrencyPicker2.SelectedIndex = -1;
+        }
+
+        private void GetData()
+        {
+            var curstoday = client.GetCursOnDate(DateTime.Now); //Ежедневный курс валют 
+            DataTable dt = XElementToDataTable(curstoday.Nodes[0]); //Таблица из исходящая из xml
+
+            //Конвертируем строки таблицы в элементы нашего созданного класса валют из xml файла (через наш конструктор)
+            foreach (DataRow x in dt.Rows)
+            {
+                AllValutes.Add(new ValuteDataValuteCursOnDate(
+                    x[0].ToString(),
+                    ushort.Parse(x[1].ToString()),
+                    decimal.Parse(x[2].ToString()),
+                    x[4].ToString(),
+                    ushort.Parse(x[3].ToString()))
+                    );
+            }
         }
     }    
 }
