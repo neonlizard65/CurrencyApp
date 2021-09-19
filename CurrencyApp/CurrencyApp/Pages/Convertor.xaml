@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CurrencyApp.Convertor"
              Title="Converter"
-             BackgroundColor="{AppThemeBinding Light=#F7CB15, Dark=#F7CB15}">
+             BackgroundColor="{AppThemeBinding Light=#Ffffff, Dark=#ffffff}">
     <ContentPage.Content>
         <StackLayout >
             <Frame Padding="0,10,0,10" Margin="0,0,0,0" BackgroundColor="{AppThemeBinding Light=#f55d3e, Dark=#f55d3e}" >
