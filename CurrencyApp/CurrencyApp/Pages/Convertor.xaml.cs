@@ -86,5 +86,16 @@ namespace CurrencyApp
 
             }
         }
+
+        private void Swap_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sbros_Clicked(object sender, EventArgs e)
+        {
+            Valute1.Text = null;
+            Valute2.Text = null;
+        }
     }    
 }

@@ -4,14 +4,17 @@
              x:Class="CurrencyApp.Convertor"
              Title="Converter">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout BackgroundColor="black">
+            <Entry x:Name="Valute1" Keyboard="Numeric"
+                   Placeholder="Введите сумму"/>
             <Picker x:Name="CurrencyPicker1"
                     ItemDisplayBinding="{Binding Vname}"/>
-            <Entry x:Name="Valute1" Keyboard="Numeric"/>
-            <Button Text="Конвертировать" x:Name="Convert_Btn" Clicked="Convert_Btn_Clicked"/>
+            <Button Text="Смена валюты" Clicked="Swap_Clicked"  TextColor="red" BackgroundColor="black" BorderWidth="2" BorderColor="red" x:Name="Swap"></Button>
             <Picker x:Name="CurrencyPicker2"
                     ItemDisplayBinding="{Binding Vname}"/>
-            <Label x:Name="Valute2"/>
+            <Label x:Name="Valute2" TextDecorations="Underline" TextColor="white" HorizontalOptions="Center" VerticalOptions="Center" FontSize="72"/>
+            <Button Text="Конвертировать" x:Name="Convert_Btn" Clicked="Convert_Btn_Clicked" BackgroundColor="black" BorderWidth="2" BorderColor="red" TextColor="Red"/>
+            <Button Text="Сброс" Clicked="sbros_Clicked" x:Name="sbros" BackgroundColor="black" BorderWidth="2" BorderColor="red" TextColor="Red"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
