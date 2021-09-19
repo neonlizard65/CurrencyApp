@@ -3,38 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CurrencyApp.Convertor"
              Title="Converter"
-             BackgroundColor="#F7CB15">
+             BackgroundColor="{AppThemeBinding Light=#F7CB15, Dark=#F7CB15}">
     <ContentPage.Content>
         <StackLayout >
-            <Frame Padding="0,10,0,10" Margin="0,0,0,0" BackgroundColor="#f55d3e" >
-                <Label HorizontalOptions="CenterAndExpand" FontSize="30" TextColor="#FFFFFF">Конвертер валют</Label>
+            <Frame Padding="0,10,0,10" Margin="0,0,0,0" BackgroundColor="{AppThemeBinding Light=#f55d3e, Dark=#f55d3e}" >
+                <Label HorizontalOptions="CenterAndExpand" FontSize="30" TextColor="{AppThemeBinding Light=#FFFFFF, Dark=#FFFFFF}">Конвертер валют</Label>
             </Frame>
-            <Frame Padding="0,0,0,0" Margin="20,65,20,0" BackgroundColor="#E6EBE0" HasShadow="True" BorderColor="#878E88" >
+            <Frame Padding="0,0,0,0" Margin="20,65,20,0" BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#FFFFFF}" HasShadow="True" BorderColor="#878E88" >
                 <StackLayout>
                     <StackLayout Margin="0,0,0,0" Padding="30,10,30,10" Orientation="Horizontal">
                         <Entry x:Name="Valute1" Keyboard="Numeric"
                              Placeholder="Введите сумму"
                              FontSize="30"
                              WidthRequest="250"/>
-                        <Button Text="Ср" Clicked="sbros_Clicked" x:Name="sbros" BackgroundColor="#f55d3e"  CornerRadius="2" FontSize="20" TextColor="#FFFFFF" HorizontalOptions="Center" WidthRequest="50"></Button>
+                        <Button Text="Ср" Clicked="sbros_Clicked" x:Name="sbros" BackgroundColor="{AppThemeBinding Light=#f55d3e, Dark=#f55d3e}"  CornerRadius="2" FontSize="20" TextColor="{AppThemeBinding Light=#FFFFFF, Dark=#FFFFFF}" HorizontalOptions="Center" WidthRequest="50"></Button>
                     </StackLayout>
                     <StackLayout Margin="0,0,0,0" Padding="30,10,30,10">
                         <Picker x:Name="CurrencyPicker1"
                     ItemDisplayBinding="{Binding Vname}"
-                    Title="Выберите вылюту"
+                    Title="Выберите валюту"
                     FontSize="30"/>
                     </StackLayout>
                     <StackLayout>
-                        <Button Text="Смена валюты" Clicked="Swap_Clicked"  BackgroundColor="#f55d3e"  CornerRadius="2" FontSize="20" TextColor="#FFFFFF" HorizontalOptions="Center" WidthRequest="200" x:Name="Swap"></Button>
+                        <Button Text="Смена валюты" Clicked="Swap_Clicked"  BackgroundColor="{AppThemeBinding Light=#f55d3e, Dark=#f55d3e}"  CornerRadius="2" FontSize="20" TextColor="{AppThemeBinding Light=#FFFFFF, Dark=#FFFFFF}" HorizontalOptions="Center" WidthRequest="200" x:Name="Swap"></Button>
                     </StackLayout>
                     <StackLayout Margin="0,0,0,0" Padding="30,10,30,10">
                         <Picker x:Name="CurrencyPicker2"
                     ItemDisplayBinding="{Binding Vname}"
-                    Title="Выберите вылюту"
+                    Title="Выберите валюту"
                     FontSize="30"/>
                     </StackLayout>
                     <StackLayout>
-                        <Button Text="Конвертировать" HorizontalOptions="Center" WidthRequest="320" x:Name="Convert_Btn" Clicked="Convert_Btn_Clicked" BackgroundColor="#f55d3e"  CornerRadius="2" FontSize="20" TextColor="#FFFFFF"/>
+                        <Button Text="Конвертировать" HorizontalOptions="Center" WidthRequest="320" x:Name="Convert_Btn" Clicked="Convert_Btn_Clicked" BackgroundColor="{AppThemeBinding Light=#f55d3e, Dark=#f55d3e}"  CornerRadius="2" FontSize="20" TextColor="{AppThemeBinding Light=#FFFFFF, Dark=#FFFFFF}"/>
                     </StackLayout>
                     <StackLayout Margin="10,20,10,30" Padding="0,0,0,0">
                         <Label x:Name="Valute2" TextDecorations="None" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" FontSize="40" IsVisible="false"/>
