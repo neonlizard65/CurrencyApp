@@ -3,44 +3,49 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              x:Class="CurrencyApp.Graph"
              Title="Graph"
-             Background="Purple">
-
-    <StackLayout Orientation="Vertical">
-        <RefreshView RefreshColor="Blue" Refreshing="RefreshView1_Refreshing" x:Name="RefreshView1">
-            <ListView Background="Purple" x:Name="ListView1"  ItemTapped="ListView1_ItemTapped">
-                <ListView.Header>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="40"/>
-                            <ColumnDefinition Width="45"/>
-                            <ColumnDefinition Width="70"/>
-                        </Grid.ColumnDefinitions>
-                        <Label Text="Название" Grid.Column="0" Margin="10, 5, 0, 0" FontSize="18"/>
-                        <Label Text="Код" Grid.Column="1" WidthRequest="40" Margin="0, 5, 0, 0" FontSize="18"/>
-                        <Label Text="Ном." Grid.Column="2" WidthRequest="45" Margin="0, 5, 0, 0" FontSize="18"/>
-                        <Label Text="Курс" Grid.Column="3" WidthRequest="70" Margin="0, 5, 0, 0" FontSize="18"/>
-                    </Grid>
-                </ListView.Header>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid x:Name="Grid1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="40"/>
-                                    <ColumnDefinition Width="45"/>
-                                    <ColumnDefinition Width="70"/>
-                                </Grid.ColumnDefinitions>
-                                <Label Margin="10, 10, 5, 0" Grid.Column="0" FontSize="14" Text="{Binding Vname}"/>
-                                <Label Margin="0, 10, 0, 0" Grid.Column="1" FontSize="14" Text="{Binding VchCode}"/>
-                                <Label Margin="0, 10, 0, 0" Grid.Column="2" FontSize="14"  Text="{Binding Vnom}"/>
-                                <Label Margin="0, 10, 0, 0" Grid.Column="3" FontSize="14" Text="{Binding Vcurs}"/>
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </RefreshView>
+             BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#FFFFFF}">
+    <StackLayout>
+        <Frame Padding="0,10,0,10" Margin="0,0,0,0" BackgroundColor="{AppThemeBinding Light=#f55d3e, Dark=#f55d3e}" >
+            <Label HorizontalOptions="CenterAndExpand" FontSize="30" TextColor="{AppThemeBinding Light=#FFFFFF, Dark=#FFFFFF}">Таблица говна и </Label>
+        </Frame>
+        <StackLayout Orientation="Vertical">
+            <RefreshView RefreshColor="Blue" Refreshing="RefreshView1_Refreshing" x:Name="RefreshView1">
+                <ListView  BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#FFFFFF}" x:Name="ListView1"  ItemTapped="ListView1_ItemTapped">
+                    <ListView.Header>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition Width="70"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Название" Grid.Column="0" Margin="10, 5, 0, 0" FontSize="18"/>
+                            <Label Text="Код" Grid.Column="1" WidthRequest="40" Margin="0, 5, 0, 0" FontSize="18"/>
+                            <Label Text="Ном." Grid.Column="2" WidthRequest="45" Margin="0, 5, 0, 0" FontSize="18"/>
+                            <Label Text="Курс" Grid.Column="3" WidthRequest="70" Margin="0, 5, 0, 0" FontSize="18"/>
+                        </Grid>
+                    </ListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid x:Name="Grid1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="40"/>
+                                        <ColumnDefinition Width="45"/>
+                                        <ColumnDefinition Width="70"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Margin="10, 10, 5, 0" Grid.Column="0" FontSize="14" Text="{Binding Vname}"/>
+                                    <Label Margin="0, 10, 0, 0" Grid.Column="1" FontSize="14" Text="{Binding VchCode}"/>
+                                    <Label Margin="0, 10, 0, 0" Grid.Column="2" FontSize="14"  Text="{Binding Vnom}"/>
+                                    <Label Margin="0, 10, 0, 0" Grid.Column="3" FontSize="14" Text="{Binding Vcurs}"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </RefreshView>
+        </StackLayout>
     </StackLayout>
+    
 </ContentPage>
