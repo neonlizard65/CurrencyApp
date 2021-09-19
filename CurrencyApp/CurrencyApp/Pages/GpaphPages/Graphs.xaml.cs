@@ -70,7 +70,7 @@ namespace CurrencyApp.Pages.GpaphPages
                     {
                         Label = item.CursDate.ToString("dd/MM/yyyy"), //Колонка(Надпись с низу)
                         ValueLabel = item.Vcurs.ToString(), //Цифры у точки на графике
-                        Color = SKColor.Parse("#3498db") //Цвет точки
+                        Color = SKColor.Parse("#f55d3e") //Цвет точки
                     };
                     if(count == 0)
                     {
