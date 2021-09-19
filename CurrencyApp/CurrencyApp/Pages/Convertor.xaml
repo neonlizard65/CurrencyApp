@@ -6,10 +6,10 @@
              BackgroundColor="#F7CB15">
     <ContentPage.Content>
         <StackLayout >
-            <Frame Padding="0,10,0,10" Margin="0,0,0,0">
-                <Label HorizontalOptions="CenterAndExpand" FontSize="30" TextColor="#5D576B">Конвектор валют</Label>
+            <Frame Padding="0,10,0,10" Margin="0,0,0,0" BackgroundColor="#f55d3e" >
+                <Label HorizontalOptions="CenterAndExpand" FontSize="30" TextColor="#FFFFFF">Конвертер валют</Label>
             </Frame>
-            <Frame Padding="0,0,0,0" Margin="20,65,20,0">
+            <Frame Padding="0,0,0,0" Margin="20,65,20,0" BackgroundColor="#E6EBE0" HasShadow="True" BorderColor="#878E88" >
                 <StackLayout>
                     <StackLayout Margin="0,0,0,0" Padding="30,10,30,10" Orientation="Horizontal">
                         <Entry x:Name="Valute1" Keyboard="Numeric"
