@@ -24,7 +24,7 @@ namespace CurrencyApp
         List<ValuteDataValuteCursOnDate> AllValutes = new List<ValuteDataValuteCursOnDate>(); //Все валюты
         public Convertor()
         {
-
+            
             var current = Connectivity.NetworkAccess;
             if (current == NetworkAccess.Internet)
             {
