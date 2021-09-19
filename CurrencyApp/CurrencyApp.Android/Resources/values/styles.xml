@@ -17,6 +17,6 @@
 	  <item name="android:activatedBackgroundIndicator">@color/ListViewSelected</item>
 	  Then, Adding the color in the colors.xml
   </style>
-	<color name="ListViewSelected">#76BED0</color>
+	<color name="ListViewSelected">#F7CB15</color>
 	<color name="ListViewHighlighted">#F55D3E</color>
 </resources>
