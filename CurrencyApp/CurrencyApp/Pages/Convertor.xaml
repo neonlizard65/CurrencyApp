@@ -2,19 +2,48 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CurrencyApp.Convertor"
-             Title="Converter">
+             Title="Converter"
+             BackgroundColor="#76BED0">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="Gray">
-            <Entry x:Name="Valute1" Keyboard="Numeric"
-                   Placeholder="Введите сумму"/>
-            <Picker x:Name="CurrencyPicker1"
-                    ItemDisplayBinding="{Binding Vname}"/>
-            <Button Text="Смена валюты" Clicked="Swap_Clicked"  TextColor="red" BackgroundColor="black" BorderWidth="2" BorderColor="red" x:Name="Swap"></Button>
-            <Picker x:Name="CurrencyPicker2"
-                    ItemDisplayBinding="{Binding Vname}"/>
-            <Label x:Name="Valute2" TextDecorations="Underline" TextColor="white" HorizontalOptions="Center" VerticalOptions="Center" FontSize="72"/>
-            <Button Text="Конвертировать" x:Name="Convert_Btn" Clicked="Convert_Btn_Clicked" BackgroundColor="black" BorderWidth="2" BorderColor="red" TextColor="Red"/>
-            <Button Text="Сброс" Clicked="sbros_Clicked" x:Name="sbros" BackgroundColor="black" BorderWidth="2" BorderColor="red" TextColor="Red"></Button>
+        <StackLayout >
+            <Frame Padding="0,0,0,0" Margin="0,0,0,0" VerticalOptions="CenterAndExpand">
+                <StackLayout>
+                    <StackLayout Margin="0,0,0,0" Padding="30,10,30,10" Orientation="Horizontal">
+                        <Entry x:Name="Valute1" Keyboard="Numeric"
+                             Placeholder="Введите сумму"
+                             FontSize="30"
+                             WidthRequest="250"/>
+                        <Button Text="Сброс" Clicked="sbros_Clicked" x:Name="sbros" BackgroundColor="#76BED0"  CornerRadius="2" FontSize="20" TextColor="#FFFFFF" HorizontalOptions="Center" WidthRequest="80"></Button>
+                    </StackLayout>
+                    <StackLayout Margin="0,0,0,0" Padding="30,10,30,10">
+                        <Picker x:Name="CurrencyPicker1"
+                    ItemDisplayBinding="{Binding Vname}"
+                    Title="Выберите вылюту"
+                    FontSize="30"/>
+                    </StackLayout>
+                    <StackLayout>
+                        <Button Text="Смена валюты" Clicked="Swap_Clicked"  BackgroundColor="#76BED0"  CornerRadius="2" FontSize="20" TextColor="#FFFFFF" HorizontalOptions="Center" WidthRequest="200" x:Name="Swap"></Button>
+                    </StackLayout>
+                    <StackLayout Margin="0,0,0,0" Padding="30,10,30,10">
+                        <Picker x:Name="CurrencyPicker2"
+                    ItemDisplayBinding="{Binding Vname}"
+                    Title="Выберите вылюту"
+                    FontSize="30"/>
+                    </StackLayout>
+                    <StackLayout>
+                        <Button Text="Конвертировать" HorizontalOptions="Center" WidthRequest="320" x:Name="Convert_Btn" Clicked="Convert_Btn_Clicked" BackgroundColor="#76BED0"  CornerRadius="2" FontSize="20" TextColor="#FFFFFF"/>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label x:Name="Valute2" TextDecorations="Underline" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" FontSize="30"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+            
+          
+            
+            
+            
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
