@@ -4,7 +4,37 @@
              x:Class="CurrencyApp.Pages.GpaphPages.Graphs">
     <ContentPage.Content>
         <StackLayout>
+            <Frame Padding="0,10,0,10" Margin="0,0,0,0" BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#000000}">
+                <Label HorizontalOptions="CenterAndExpand" FontSize="30" TextColor="{AppThemeBinding Light=#FFFFFF, Dark=#FFFFFF}">Обзор 14 дней*</Label>
+            </Frame>
             <microcharts:ChartView x:Name="chartViewBar" HeightRequest="200"/>
+            <Label HorizontalOptions="CenterAndExpand" FontSize="12">*в учёт берутся только рабочие дни</Label>
+            <ListView x:Name="ListView1">
+                <ListView.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Margin="0, 0, 0, 15" HorizontalOptions="Center" Grid.Column="0" Text="Дата" FontSize="18" TextColor="{AppThemeBinding Light=#f55d3e, Dark=#f55d3e}"/>
+                        <Label Margin="0, 0, 0, 15" HorizontalOptions="Center" Grid.Column="1" Text="Курc" FontSize="18"  TextColor="{AppThemeBinding Light=#f55d3e, Dark=#f55d3e}"/>
+                    </Grid>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label HorizontalOptions="Center" Grid.Column="0" Text="{Binding CursDate, StringFormat='{}{0:dd/MM/yyyy}'}"/>
+                                <Label HorizontalOptions="Center" Grid.Column="1" Text="{Binding Vcurs}"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -35,7 +35,7 @@ namespace CurrencyApp.Pages.GpaphPages
 
                
                 DateTime d1 = DateTime.Now;
-                DateTime d2 = d1.Subtract(new TimeSpan(9, 0, 0, 0));
+                DateTime d2 = d1.Subtract(new TimeSpan(15, 0, 0, 0));
 
                 string currentValute = null;
 
@@ -70,7 +70,7 @@ namespace CurrencyApp.Pages.GpaphPages
                     {
                         Label = item.CursDate.ToString("dd/MM/yyyy"), //Колонка(Надпись с низу)
                         ValueLabel = item.Vcurs.ToString(), //Цифры у точки на графике
-                        Color = SKColor.Parse("#f55d3e") //Цвет точки
+                        Color = SKColor.Parse("#f51d3e") //Цвет точки
                     };
                     if(count == 0)
                     {
@@ -93,6 +93,8 @@ namespace CurrencyApp.Pages.GpaphPages
                 min = min - ((max - min)/2);
 
                 chartViewBar.Chart = new LineChart { Entries = entries, LabelTextSize = 12, LineMode = LineMode.Straight, LabelOrientation = Orientation.Horizontal, ValueLabelOrientation = Orientation.Horizontal, MinValue=min };//Вывод графика с параметрами
+
+                ListView1.ItemsSource = dynamicList;
             }
         }
 
