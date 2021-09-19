@@ -6,59 +6,55 @@
              Title="Converter"
              BackgroundColor="{AppThemeBinding Light=#Ffffff, Dark=#ffffff}">
     <ContentPage.Content>
-        <StackLayout >
-            <Frame Padding="0,10,0,10" Margin="0,0,0,0" BackgroundColor="{AppThemeBinding Light=#f55d3e, Dark=#f55d3e}" >
-                <Label HorizontalOptions="CenterAndExpand" FontSize="30" TextColor="{AppThemeBinding Light=#FFFFFF, Dark=#FFFFFF}">Конвертер валют</Label>
-            </Frame>
-            <Frame Padding="0,0,0,0" Margin="20,65,20,0" BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#FFFFFF}" HasShadow="True" BorderColor="#878E88" >
-                <StackLayout>
-                    <StackLayout Margin="0,0,0,0" Padding="30,10,30,10" Orientation="Horizontal">
-                        <Entry x:Name="Valute1" Keyboard="Numeric"
+        <ScrollView>
+            <StackLayout >
+                <Frame Padding="0,10,0,10" Margin="0,0,0,0" BackgroundColor="{AppThemeBinding Light=#f55d3e, Dark=#f55d3e}" >
+                    <Label HorizontalOptions="CenterAndExpand" FontSize="30" TextColor="{AppThemeBinding Light=#FFFFFF, Dark=#FFFFFF}">Конвертер валют</Label>
+                </Frame>
+                <Frame Padding="0,0,0,0" Margin="20,65,20,0" BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#FFFFFF}" HasShadow="True" BorderColor="#878E88" >
+                    <StackLayout>
+                        <StackLayout Margin="0,0,0,0" Padding="30,10,30,10" Orientation="Horizontal">
+                            <Entry x:Name="Valute1" Keyboard="Numeric"
                              Placeholder="Введите сумму"
                              FontSize="30"
                              WidthRequest="245"
                              TextColor="{AppThemeBinding Light=#000000, Dark=#000000}"
                              PlaceholderColor="{AppThemeBinding Light=#878E88, Dark=#878E88}"/>
-                        <Button FontFamily="AC" Text="{StaticResource Erase}" Clicked="sbros_Clicked" x:Name="sbros" BackgroundColor="{AppThemeBinding Light=#f55d3e, Dark=#f55d3e}"  CornerRadius="2" FontSize="35" TextColor="{AppThemeBinding Light=#ffffff, Dark=#ffffff}" HorizontalOptions="Center" WidthRequest="60"></Button>
-                    </StackLayout>
-                    <StackLayout Margin="0,0,0,0" Padding="30,10,30,10">
-                        <Picker x:Name="CurrencyPicker1"
+                            <Button FontFamily="AC" Text="{StaticResource Erase}" Clicked="sbros_Clicked" x:Name="sbros" BackgroundColor="{AppThemeBinding Light=#f55d3e, Dark=#f55d3e}"  CornerRadius="2" FontSize="35" TextColor="{AppThemeBinding Light=#ffffff, Dark=#ffffff}" HorizontalOptions="Center" WidthRequest="60"></Button>
+                        </StackLayout>
+                        <StackLayout Margin="0,0,0,0" Padding="30,10,30,10">
+                            <Picker x:Name="CurrencyPicker1"
                     ItemDisplayBinding="{Binding VchCode}"
                     Title="Выберите валюту"
                     FontSize="30"
                     TitleColor="{AppThemeBinding Light=#878E88, Dark=#878E88}"
                     TextColor="{AppThemeBinding Light=#000000, Dark=#000000}"/>
-                    </StackLayout>
-                    <StackLayout>
-                        <Button Text="{StaticResource ChahgeValue}" Clicked="Swap_Clicked" FontFamily="AC"
+                        </StackLayout>
+                        <StackLayout>
+                            <Button Text="{StaticResource ChahgeValue}" Clicked="Swap_Clicked" FontFamily="AC"
                                 BackgroundColor="{AppThemeBinding Light=#f55d3e, Dark=#f55d3e}"
                                 CornerRadius="2" FontSize="35"
                                 TextColor="{AppThemeBinding Light=#ffffff, Dark=#ffffff}"
                                 HorizontalOptions="Center" WidthRequest="60"
                                 x:Name="Swap"></Button>
-                    </StackLayout>
-                    <StackLayout Margin="0,0,0,0" Padding="30,10,30,10">
-                        <Picker x:Name="CurrencyPicker2"
+                        </StackLayout>
+                        <StackLayout Margin="0,0,0,0" Padding="30,10,30,10">
+                            <Picker x:Name="CurrencyPicker2"
                     ItemDisplayBinding="{Binding VchCode}"
                     Title="Выберите валюту"
                     FontSize="30"
                     TitleColor="{AppThemeBinding Light=#878E88, Dark=#878E88}"
                     TextColor="{AppThemeBinding Light=#000000, Dark=#000000}"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <Button Text="Конвертировать" HorizontalOptions="Center" WidthRequest="320" x:Name="Convert_Btn" Clicked="Convert_Btn_Clicked" BackgroundColor="{AppThemeBinding Light=#f55d3e, Dark=#f55d3e}"  CornerRadius="2" FontSize="20" TextColor="{AppThemeBinding Light=#FFFFFF, Dark=#FFFFFF}"/>
+                        </StackLayout>
+                        <StackLayout Margin="10,20,10,30" Padding="0,0,0,0">
+                            <Label x:Name="Valute2" TextDecorations="None" TextColor="{AppThemeBinding Light=#000000, Dark=#000000}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="40" IsVisible="false"/>
+                        </StackLayout>
                     </StackLayout>
-                    <StackLayout>
-                        <Button Text="Конвертировать" HorizontalOptions="Center" WidthRequest="320" x:Name="Convert_Btn" Clicked="Convert_Btn_Clicked" BackgroundColor="{AppThemeBinding Light=#f55d3e, Dark=#f55d3e}"  CornerRadius="2" FontSize="20" TextColor="{AppThemeBinding Light=#FFFFFF, Dark=#FFFFFF}"/>
-                    </StackLayout>
-                    <StackLayout Margin="10,20,10,30" Padding="0,0,0,0">
-                        <Label x:Name="Valute2" TextDecorations="None" TextColor="{AppThemeBinding Light=#000000, Dark=#000000}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="40" IsVisible="false"/>
-                    </StackLayout>
-                </StackLayout>
-            </Frame>
-            
-          
-            
-            
-            
-            
-        </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

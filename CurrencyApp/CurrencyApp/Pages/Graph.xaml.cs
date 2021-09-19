@@ -1,22 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Data;
-
 using ServiceReference1;
 using System.Xml.Linq;
 using System.IO;
 using static CurrencyApp.CurrentCurrencyClass;
 using static CurrencyApp.IncomingClasses.EnumCourses;
-using CurrencyApp.IncomingClasses;
-using Microcharts;
-using Microcharts.Forms;
-using SkiaSharp;
 using CurrencyApp.Pages.GpaphPages;
 using Xamarin.Essentials;
 
