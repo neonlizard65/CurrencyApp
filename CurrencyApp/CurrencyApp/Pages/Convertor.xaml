@@ -4,7 +4,7 @@
              x:Class="CurrencyApp.Convertor"
              Title="Converter">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="black">
+        <StackLayout BackgroundColor="Gray">
             <Entry x:Name="Valute1" Keyboard="Numeric"
                    Placeholder="Введите сумму"/>
             <Picker x:Name="CurrencyPicker1"
