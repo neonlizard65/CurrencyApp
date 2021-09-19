@@ -7,14 +7,15 @@
     <ContentPage.Content>
         
         <StackLayout>
+            <Label HorizontalOptions="CenterAndExpand" FontSize="30">Сборник новостей</Label>
             <RefreshView RefreshColor="#9bc1bc" Refreshing="RefreshView_Refreshing" x:Name="RefreshView1">
                 <ListView x:Name="NewsList" HasUnevenRows="True" ItemTapped="TapGestureRecognizer_Tapped">
-                    <ListView.ItemTemplate>
+                    <ListView.ItemTemplate >
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Orientation="Vertical" Padding="5,5,5,0 ">
-                                    <Label Margin="5, 10, 0, 0" TextColor="#ED6A5A" FontSize="15" x:Name="DateNews" Text="{Binding DocDate, StringFormat='{}{0:HH:mm     dd/MM/yyyy}'}"/>
-                                    <Label Margin="5, 0, 5, 5"  TextColor="#5d576b" x:Name="HeaderNews" Text="{Binding Title, StringFormat='{}{0}&#x0d;&#x0a;'}"/>
+                                    <Label Margin="5, 15, 0, 0" TextColor="#ED6A5A" FontSize="15" x:Name="DateNews" Text="{Binding DocDate, StringFormat='{}{0:HH:mm     dd/MM/yyyy}'}"/>
+                                    <Label Margin="5, 0, 5, 5"  TextColor="#5d576b" FontSize="20"  x:Name="HeaderNews" Text="{Binding Title, StringFormat='{}{0}&#x0d;&#x0a;'}"/>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
