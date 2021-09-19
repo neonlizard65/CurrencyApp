@@ -19,6 +19,8 @@ namespace CurrencyApp
     public partial class Home : ContentPage
     {
         List<NewsInfoNews> AllNews = new List<NewsInfoNews>();
+        //Подклчение и загрузка данных их ЦБ
+        DailyInfoSoapClient client = new DailyInfoSoapClient(DailyInfoSoapClient.EndpointConfiguration.DailyInfoSoap);
         public Home()
         {
             var current = Connectivity.NetworkAccess;
@@ -26,48 +28,13 @@ namespace CurrencyApp
             {
                 InitializeComponent();
 
-
-
                 //https://coolors.co/2c302e-474a48-909590-9ae19d-537a5a
                 //https://coolors.co/e8c547-30323d-4d5061-5c80bc-cdd1c4
                 //https://coolors.co/ed6a5a-f4f1bb-9bc1bc-5d576b-e6ebe0
 
-
-
-
-
-                //Подклчение и загрузка данных их ЦБ
-                DailyInfoSoapClient client = new DailyInfoSoapClient(DailyInfoSoapClient.EndpointConfiguration.DailyInfoSoap);
-                DateTime weekago = DateTime.Now;
-                weekago = weekago.Subtract(new TimeSpan(7, 0, 0, 0));
-                var weeklynews = client.NewsInfo(weekago, DateTime.Now);
-                DataTable dt = XElementToDataTable(weeklynews.Nodes[0]);
-
-
-                foreach (DataRow x in dt.Rows)
-                {
-                    AllNews.Add(new NewsInfoNews(
-                        Convert.ToDateTime(x[1].ToString()),
-                        x[2].ToString(),
-                        x[3].ToString())
-                        );
-                }
-
+                GetData();
                 NewsList.ItemsSource = AllNews;
             }
-            else
-            {
-                
-            }
-        }
-        
-
-        private void ShutUp_Clicked(object sender, EventArgs e)
-        {
-            if (ShutUp.Text == "OFF FACE")
-                ShutUp.Text = "Выключи и иди делай уроки";
-            else if (ShutUp.Text== "Выключи и иди делай уроки")
-                ShutUp.Text = "OFF FACE";
         }
 
         public DataTable XElementToDataTable(XElement element)
@@ -86,6 +53,30 @@ namespace CurrencyApp
             catch
             {
                 // An unexpected error occured. No browser may be installed on the device.
+            }
+        }
+
+        private async void RefreshView_Refreshing(object sender, EventArgs e)
+        {
+            await Task.Delay(2000);
+            GetData();
+            RefreshView1.IsRefreshing = false;
+        }
+
+        private void GetData()
+        {
+            DateTime weekago = DateTime.Now;
+            weekago = weekago.Subtract(new TimeSpan(7, 0, 0, 0));
+            var weeklynews = client.NewsInfo(weekago, DateTime.Now);
+            DataTable dt = XElementToDataTable(weeklynews.Nodes[0]);
+
+            foreach (DataRow x in dt.Rows)
+            {
+                AllNews.Add(new NewsInfoNews(
+                    Convert.ToDateTime(x[1].ToString()),
+                    x[2].ToString(),
+                    x[3].ToString())
+                    );
             }
         }
     }

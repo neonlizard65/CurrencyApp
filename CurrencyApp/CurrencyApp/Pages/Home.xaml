@@ -4,20 +4,23 @@
              x:Class="CurrencyApp.Home"
              Title="Home">
     <ContentPage.Content>
+        
         <StackLayout>
-            <ListView x:Name="NewsList" HasUnevenRows="True" ItemTapped="TapGestureRecognizer_Tapped">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Vertical">
-                                <Label x:Name="DateNews" Text="{Binding DocDate, StringFormat='{}{0: HH:mm     dd/MM/yyyy}'}" />
-                                <Label x:Name="HeaderNews" Text="{Binding Title}"/>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <Button x:Name="ShutUp" Text="OFF FACE" Clicked="ShutUp_Clicked"></Button>
+            <RefreshView RefreshColor="Blue" Refreshing="RefreshView_Refreshing" x:Name="RefreshView1">
+                <ListView x:Name="NewsList" HasUnevenRows="True" ItemTapped="TapGestureRecognizer_Tapped">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Vertical">
+                                    <Label Margin="5, 10, 0, 0"  x:Name="DateNews" Text="{Binding DocDate, StringFormat='{}{0:HH:mm     dd/MM/yyyy}'}"/>
+                                    <Label Margin="5, 0, 5, 5" x:Name="HeaderNews" Text="{Binding Title, StringFormat='{}{0}&#x0d;&#x0a;'}"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </RefreshView>
         </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>
