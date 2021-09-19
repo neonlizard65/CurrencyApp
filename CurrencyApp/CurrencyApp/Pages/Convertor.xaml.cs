@@ -85,6 +85,7 @@ namespace CurrencyApp
 
         private void sbros_Clicked(object sender, EventArgs e)
         {
+            Valute2.IsVisible = false;
             Valute1.Text = null;
             Valute2.Text = null;
             CurrencyPicker1.SelectedIndex = -1;

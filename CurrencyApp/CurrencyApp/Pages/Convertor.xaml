@@ -17,7 +17,7 @@
                              FontSize="30"
                              WidthRequest="245"
                              TextColor="{AppThemeBinding Light=#000000, Dark=#000000}"
-                              PlaceholderColor="{AppThemeBinding Light=#878E88, Dark=#878E88}"/>
+                             PlaceholderColor="{AppThemeBinding Light=#878E88, Dark=#878E88}"/>
                         <Button FontFamily="AC" Text="{StaticResource Erase}" Clicked="sbros_Clicked" x:Name="sbros" BackgroundColor="{AppThemeBinding Light=#f55d3e, Dark=#f55d3e}"  CornerRadius="2" FontSize="35" TextColor="{AppThemeBinding Light=#ffffff, Dark=#ffffff}" HorizontalOptions="Center" WidthRequest="60"></Button>
                     </StackLayout>
                     <StackLayout Margin="0,0,0,0" Padding="30,10,30,10">
