@@ -24,7 +24,7 @@ namespace CurrencyApp
         List<ValuteDataValuteCursOnDate> AllValutes = new List<ValuteDataValuteCursOnDate>(); //Все валюты
         public Convertor()
         {
-
+            
             var current = Connectivity.NetworkAccess;
             if (current == NetworkAccess.Internet)
             {
@@ -85,6 +85,7 @@ namespace CurrencyApp
 
         private void sbros_Clicked(object sender, EventArgs e)
         {
+            Valute2.IsVisible = false;
             Valute1.Text = null;
             Valute2.Text = null;
             CurrencyPicker1.SelectedIndex = -1;

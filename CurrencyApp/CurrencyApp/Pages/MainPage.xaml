@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:CurrencyApp;assembly=CurrencyApp">
 
     <TabbedPage.Children>
-        <local:Graph/>
+        <local:Graph></local:Graph>
         <local:Home/>
         <local:Convertor/>
     </TabbedPage.Children>

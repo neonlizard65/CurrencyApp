@@ -9,6 +9,7 @@
             <x:String x:Key="Table">&#xE800;</x:String>
             <x:String x:Key="Calculate">&#xF1EC;</x:String>
             <x:String x:Key="News">&#xF1EA;</x:String>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>
