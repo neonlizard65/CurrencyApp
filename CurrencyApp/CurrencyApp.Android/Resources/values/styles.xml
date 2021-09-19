@@ -2,9 +2,6 @@
 <resources>
 
   <style name="MainTheme" parent="MainTheme.Base">
-    
-	
-    
     <!-- colorPrimary is used for the default action bar background -->
     <item name="colorPrimary">#f55d3e</item>--
     <!-- colorPrimaryDark is used for the status bar -->
