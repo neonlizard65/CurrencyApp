@@ -89,13 +89,21 @@ namespace CurrencyApp
 
         private void Swap_Clicked(object sender, EventArgs e)
         {
-
+            var tempval = CurrencyPicker1.SelectedItem;
+            CurrencyPicker1.SelectedItem = CurrencyPicker2.SelectedItem;
+            CurrencyPicker2.SelectedItem = tempval;
+            string temptext;
+            temptext = Valute1.Text;
+            Valute1.Text = Valute2.Text;
+            Valute2.Text = temptext;
         }
 
         private void sbros_Clicked(object sender, EventArgs e)
         {
             Valute1.Text = null;
             Valute2.Text = null;
+            CurrencyPicker1.SelectedIndex = -1;
+            CurrencyPicker2.SelectedIndex = -1;
         }
     }    
 }
