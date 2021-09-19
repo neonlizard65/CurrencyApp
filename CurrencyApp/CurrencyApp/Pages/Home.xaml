@@ -12,7 +12,7 @@
             </Frame>
 
             <RefreshView RefreshColor="{AppThemeBinding Light=#F7CB15, Dark=#F7CB15}" Refreshing="RefreshView_Refreshing" x:Name="RefreshView1">
-                <ListView x:Name="NewsList" HasUnevenRows="True" ItemTapped="TapGestureRecognizer_Tapped" SeparatorColor="{AppThemeBinding Light=#F7CB15, Dark=#F7CB15}" >
+                <ListView x:Name="NewsList" HasUnevenRows="True" ItemTapped="TapGestureRecognizer_Tapped">
                     <ListView.ItemTemplate >
                         <DataTemplate>
                             <ViewCell>
