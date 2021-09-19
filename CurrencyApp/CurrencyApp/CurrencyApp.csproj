@@ -19,6 +19,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\fonts\iiccoonnss.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\fonts\iiccoonnss.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microcharts" Version="0.9.5.9" />
     <PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
     <PackageReference Include="System.ServiceModel.Duplex" Version="4.4.*" />

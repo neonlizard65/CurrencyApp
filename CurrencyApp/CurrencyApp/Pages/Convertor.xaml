@@ -15,10 +15,10 @@
                         <Entry x:Name="Valute1" Keyboard="Numeric"
                              Placeholder="Введите сумму"
                              FontSize="30"
-                             WidthRequest="250"
+                             WidthRequest="245"
                              TextColor="{AppThemeBinding Light=#000000, Dark=#000000}"
                               PlaceholderColor="{AppThemeBinding Light=#878E88, Dark=#878E88}"/>
-                        <Button Text="Ср" Clicked="sbros_Clicked" x:Name="sbros" BackgroundColor="{AppThemeBinding Light=#f55d3e, Dark=#f55d3e}"  CornerRadius="2" FontSize="20" TextColor="{AppThemeBinding Light=#ffffff, Dark=#ffffff}" HorizontalOptions="Center" WidthRequest="50"></Button>
+                        <Button FontFamily="AC" Text="{StaticResource Erase}" Clicked="sbros_Clicked" x:Name="sbros" BackgroundColor="{AppThemeBinding Light=#f55d3e, Dark=#f55d3e}"  CornerRadius="2" FontSize="35" TextColor="{AppThemeBinding Light=#ffffff, Dark=#ffffff}" HorizontalOptions="Center" WidthRequest="60"></Button>
                     </StackLayout>
                     <StackLayout Margin="0,0,0,0" Padding="30,10,30,10">
                         <Picker x:Name="CurrencyPicker1"
@@ -29,7 +29,12 @@
                     TextColor="{AppThemeBinding Light=#000000, Dark=#000000}"/>
                     </StackLayout>
                     <StackLayout>
-                        <Button Text="Смена валюты" Clicked="Swap_Clicked"   BackgroundColor="{AppThemeBinding Light=#f55d3e, Dark=#f55d3e}"  CornerRadius="2" FontSize="20" TextColor="{AppThemeBinding Light=#ffffff, Dark=#ffffff}" HorizontalOptions="Center" WidthRequest="200" x:Name="Swap"></Button>
+                        <Button Text="{StaticResource ChahgeValue}" Clicked="Swap_Clicked" FontFamily="AC"
+                                BackgroundColor="{AppThemeBinding Light=#f55d3e, Dark=#f55d3e}"
+                                CornerRadius="2" FontSize="35"
+                                TextColor="{AppThemeBinding Light=#ffffff, Dark=#ffffff}"
+                                HorizontalOptions="Center" WidthRequest="60"
+                                x:Name="Swap"></Button>
                     </StackLayout>
                     <StackLayout Margin="0,0,0,0" Padding="30,10,30,10">
                         <Picker x:Name="CurrencyPicker2"

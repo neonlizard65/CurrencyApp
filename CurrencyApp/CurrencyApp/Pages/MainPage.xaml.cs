@@ -22,6 +22,7 @@ namespace CurrencyApp
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             CurrentPage = Children[1];
+            
         }
 
     }

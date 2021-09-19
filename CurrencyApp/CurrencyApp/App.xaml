@@ -3,6 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CurrencyApp.App">
     <Application.Resources>
-
+        <ResourceDictionary>
+            <x:String x:Key="ChahgeValue">&#xE801;</x:String>
+            <x:String x:Key="Erase">&#xF12D;</x:String>
+            <x:String x:Key="Table">&#xE800;</x:String>
+            <x:String x:Key="Calculate">&#xF1EC;</x:String>
+            <x:String x:Key="News">&#xF1EA;</x:String>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
