@@ -12,6 +12,7 @@ using System.IO;
 using static CurrencyApp.CurrentCurrencyClass;
 using Xamarin.Essentials;
 
+
 namespace CurrencyApp
 {
     public partial class MainPage : TabbedPage

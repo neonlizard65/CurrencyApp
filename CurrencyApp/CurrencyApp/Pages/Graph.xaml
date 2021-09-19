@@ -9,20 +9,20 @@
             <Label HorizontalOptions="CenterAndExpand" FontSize="30" TextColor="{AppThemeBinding Light=#FFFFFF, Dark=#FFFFFF}">Таблица говна и графики</Label>
         </Frame>
         <StackLayout Orientation="Vertical">
-            <RefreshView RefreshColor="Blue" Refreshing="RefreshView1_Refreshing" x:Name="RefreshView1">
+            <RefreshView RefreshColor="{AppThemeBinding Light=#F7CB15, Dark=#F7CB15}" Refreshing="RefreshView1_Refreshing" x:Name="RefreshView1">
                 <ListView  BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#FFFFFF}" x:Name="ListView1"  ItemTapped="ListView1_ItemTapped">
                     <ListView.Header>
-                        <Grid>
+                        <Grid Padding="0,10,0,10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="40"/>
                                 <ColumnDefinition Width="45"/>
                                 <ColumnDefinition Width="70"/>
                             </Grid.ColumnDefinitions>
-                            <Label Text="Название" Grid.Column="0" Margin="10, 5, 0, 0" FontSize="18"/>
-                            <Label Text="Код" Grid.Column="1" WidthRequest="40" Margin="0, 5, 0, 0" FontSize="18"/>
-                            <Label Text="Ном." Grid.Column="2" WidthRequest="45" Margin="0, 5, 0, 0" FontSize="18"/>
-                            <Label Text="Курс" Grid.Column="3" WidthRequest="70" Margin="0, 5, 0, 0" FontSize="18"/>
+                            <Label Text="Название" Grid.Column="0" Margin="10, 5, 0, 0" FontSize="18" TextColor="{AppThemeBinding Light=#f55d3e, Dark=#f55d3e}"/>
+                            <Label Text="Код" Grid.Column="1" WidthRequest="40" Margin="0, 5, 0, 0" FontSize="18" TextColor="{AppThemeBinding Light=#f55d3e, Dark=#f55d3e}"/>
+                            <Label Text="Ном." Grid.Column="2" WidthRequest="45" Margin="0, 5, 0, 0" FontSize="18" TextColor="{AppThemeBinding Light=#f55d3e, Dark=#f55d3e}"/>
+                            <Label Text="Курс" Grid.Column="3" WidthRequest="70" Margin="0, 5, 0, 0" FontSize="18" TextColor="{AppThemeBinding Light=#f55d3e, Dark=#f55d3e}"/>
                         </Grid>
                     </ListView.Header>
                     <ListView.ItemTemplate>
