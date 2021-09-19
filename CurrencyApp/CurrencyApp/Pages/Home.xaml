@@ -7,7 +7,7 @@
     <ContentPage.Content>
         
         <StackLayout>
-            <Frame BorderColor="#5D576B" Padding="0, 10, 0, 10" BackgroundColor="{AppThemeBinding Light=#f55d3e, Dark=#f55d3e}">
+            <Frame Padding="0, 10, 0, 10" BackgroundColor="{AppThemeBinding Light=#f55d3e, Dark=#f55d3e}">
                 <Label HorizontalOptions="CenterAndExpand" FontSize="30" TextColor="{AppThemeBinding Light=#ffffff, Dark=#ffffff}">Сборник новостей</Label>
             </Frame>
 

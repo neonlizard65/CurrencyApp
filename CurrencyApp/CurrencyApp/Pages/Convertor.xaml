@@ -16,7 +16,8 @@
                              Placeholder="Введите сумму"
                              FontSize="30"
                              WidthRequest="250"
-                             TextColor="{AppThemeBinding Light=#000000, Dark=#000000}"/>
+                             TextColor="{AppThemeBinding Light=#000000, Dark=#000000}"
+                              PlaceholderColor="{AppThemeBinding Light=#878E88, Dark=#878E88}"/>
                         <Button Text="Ср" Clicked="sbros_Clicked" x:Name="sbros" BackgroundColor="{AppThemeBinding Light=#f55d3e, Dark=#f55d3e}"  CornerRadius="2" FontSize="20" TextColor="{AppThemeBinding Light=#ffffff, Dark=#ffffff}" HorizontalOptions="Center" WidthRequest="50"></Button>
                     </StackLayout>
                     <StackLayout Margin="0,0,0,0" Padding="30,10,30,10">
@@ -24,7 +25,7 @@
                     ItemDisplayBinding="{Binding Vname}"
                     Title="Выберите валюту"
                     FontSize="30"
-                    TitleColor="#878E88"
+                    TitleColor="{AppThemeBinding Light=#878E88, Dark=#878E88}"
                     TextColor="{AppThemeBinding Light=#000000, Dark=#000000}"/>
                     </StackLayout>
                     <StackLayout>
@@ -35,14 +36,14 @@
                     ItemDisplayBinding="{Binding Vname}"
                     Title="Выберите валюту"
                     FontSize="30"
-                    TitleColor="#878E88"
+                    TitleColor="{AppThemeBinding Light=#878E88, Dark=#878E88}"
                     TextColor="{AppThemeBinding Light=#000000, Dark=#000000}"/>
                     </StackLayout>
                     <StackLayout>
                         <Button Text="Конвертировать" HorizontalOptions="Center" WidthRequest="320" x:Name="Convert_Btn" Clicked="Convert_Btn_Clicked" BackgroundColor="{AppThemeBinding Light=#f55d3e, Dark=#f55d3e}"  CornerRadius="2" FontSize="20" TextColor="{AppThemeBinding Light=#FFFFFF, Dark=#FFFFFF}"/>
                     </StackLayout>
                     <StackLayout Margin="10,20,10,30" Padding="0,0,0,0">
-                        <Label x:Name="Valute2" TextDecorations="None" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" FontSize="40" IsVisible="false"/>
+                        <Label x:Name="Valute2" TextDecorations="None" TextColor="{AppThemeBinding Light=#000000, Dark=#000000}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="40" IsVisible="false"/>
                     </StackLayout>
                 </StackLayout>
             </Frame>
