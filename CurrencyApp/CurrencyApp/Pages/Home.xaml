@@ -2,18 +2,19 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CurrencyApp.Home"
-             Title="Home">
+             Title="Home"
+             BackgroundColor="#e6ebe0">
     <ContentPage.Content>
         
         <StackLayout>
-            <RefreshView RefreshColor="Blue" Refreshing="RefreshView_Refreshing" x:Name="RefreshView1">
+            <RefreshView RefreshColor="#9bc1bc" Refreshing="RefreshView_Refreshing" x:Name="RefreshView1">
                 <ListView x:Name="NewsList" HasUnevenRows="True" ItemTapped="TapGestureRecognizer_Tapped">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Orientation="Vertical">
-                                    <Label Margin="5, 10, 0, 0"  x:Name="DateNews" Text="{Binding DocDate, StringFormat='{}{0:HH:mm     dd/MM/yyyy}'}"/>
-                                    <Label Margin="5, 0, 5, 5" x:Name="HeaderNews" Text="{Binding Title, StringFormat='{}{0}&#x0d;&#x0a;'}"/>
+                                <StackLayout Orientation="Vertical" Padding="5,5,5,0 ">
+                                    <Label Margin="5, 10, 0, 0" TextColor="#ED6A5A" FontSize="15" x:Name="DateNews" Text="{Binding DocDate, StringFormat='{}{0:HH:mm     dd/MM/yyyy}'}"/>
+                                    <Label Margin="5, 0, 5, 5"  TextColor="#5d576b" x:Name="HeaderNews" Text="{Binding Title, StringFormat='{}{0}&#x0d;&#x0a;'}"/>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
