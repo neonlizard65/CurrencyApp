@@ -5,7 +5,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Frame Padding="0,10,0,10" Margin="0,0,0,0" BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#000000}">
-                <Label HorizontalOptions="CenterAndExpand" FontSize="30" TextColor="{AppThemeBinding Light=#FFFFFF, Dark=#FFFFFF}">Обзор 14 дней*</Label>
+                <Label HorizontalOptions="CenterAndExpand" FontSize="30" TextColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}">Обзор 14 дней*</Label>
             </Frame>
             <microcharts:ChartView x:Name="chartViewBar" HeightRequest="200"/>
             <Label HorizontalOptions="CenterAndExpand" FontSize="12">*в учёт берутся только рабочие дни</Label>
