@@ -60,7 +60,9 @@ namespace CurrencyApp
                 ValuteDataValuteCursOnDate val2 = (ValuteDataValuteCursOnDate)CurrencyPicker2.SelectedItem;
 
                 Valute2.Text = ((val1.Vcurs / val1.Vnom) * multiplier / (val2.Vcurs / val2.Vnom)).ToString("F4"); //Вывод
-                Valute2.IsVisible = true;    
+                Valute2.IsVisible = true;
+                if (Valute1.Text == "69.69")
+                    DisplayAlert("Кря?", "КРЯ-КРЯ КРЯ-КРЯ КРЯ-КРЯ КРЯ-КРЯ КРЯ-КРЯ КРЯ-КРЯ КРЯ-КРЯ КРЯ-КРЯ КРЯ-КРЯ", "кря");
             }
             catch
             {
